@@ -1,115 +1,116 @@
-    @import url('https://fonts.googleapis.com/css2?family=Cormorant+Infant:wght@400;700&family=M+PLUS+Rounded+1c:wght@400;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap");
 
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+body {
+  background-color: #111827;
+  color: #f8f9fa;
+  font-family: "Poppins", sans-serif;
+  font-size: 18px;
+}
 
-    body, html {
-      height: 100%;
-    }
+/* configuración para el nav-bar */
+.nav-custom {
+  position: fixed;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(250, 250, 250, 0.4);
+  backdrop-filter: blur(10px);
+  border-radius: 50px;
+  padding: 5px 10px;
+  z-index: 1000;
+  box-shadow: 0px 4px 10px rgba(250, 250, 250, 0.3);
+}
+.nav-custom a {
+  color: #f8f9fa;
+  text-decoration: none;
+  padding: 5px 10px;
+  border-radius: 30px;
+  font-size: 0.9rem;
+  transition: background 0.3s ease;
+  font-weight: bold;
+}
+.nav-custom a:hover {
+  background: rgba(250, 250, 250, 0.5);
+}
 
-    .navbar {
-      font-family: 'M PLUS Rounded 1c', sans-serif;
-      background: rgba(0, 0, 0, 0.3);
-      backdrop-filter: blur(5px);
-    }
+/* hero seccion */
+.section-full-hero {
+  min-height: 100vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  position: relative;
+  z-index: 1;
+  padding-top: 80px;
+  background: url("/img/hero-backgound-2.svg") no-repeat center bottom/cover;
+}
+/* Fix para Safari iOS */
+@supports (-webkit-touch-callout: none) {
+  .section-full-hero {
+    background-attachment: scroll !important;
+  }
+}
 
-    .navbar .nav-link {
-      color: white !important;
-      margin-left: 1rem;
-      font-weight: 500;
-    }
+/* primera sección */
+.section-full {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  position: relative;
+  z-index: 1;
+  padding: 3rem 1rem;
+  /* margin-top: 80px; */
+}
+.logo-hero {
+  width: 240px; /* Más ancho */
+  height: auto;
+  margin-bottom: 1rem;
+  filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.25));
+  transition: transform 0.3s ease;
+}
 
-    .navbar .navbar-brand img {
-      height: 40px;
-    }
+.logo-hero:hover {
+  transform: scale(1.02);
+}
+/* segunda sección */
+.second-section {
+  background: linear-gradient(to bottom, white, white);
+  min-height: 100vh; /* Para que cubra toda la pantalla */
+  margin: 0;
+  padding: 0;
+  color: black;
+}
+/* fuerza la optimización de renderizado en móviles */
+.ml12 .letter {
+  /* Fuerza la optimización de renderizado en móviles */
+  will-change: transform, opacity;
+  backface-visibility: hidden;
+}
+.text-change {
+  transition: opacity 0.5s ease;
+}
+.btn-custom {
+  background-color: #fff;
+  color: #000;
+  border-radius: 50px;
+  padding: 12px 30px;
+  font-size: 1.2rem;
+  transition: background-color 0.6s ease-in-out, color 0.6s ease-in-out;
+}
 
-    .header-hero {
-      position: relative;
-      height: 100vh;
-      background-color: #11001c;
-      color: white;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      font-family: 'Cormorant Infant', serif;
-      overflow: hidden;
-    }
-
-    .header-hero::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(to bottom, rgba(255, 255, 255, 0.05), rgba(255, 215, 0, 0.1));
-      pointer-events: none;
-      z-index: 1;
-    }
-
-    .header-hero .container {
-      position: relative;
-      z-index: 2;
-    }
-
-    .header-hero h1 {
-      font-size: 4rem;
-      font-weight: 700;
-      letter-spacing: 3px;
-      text-transform: uppercase;
-      opacity: 0;
-      transform: translateY(30px);
-      animation: fadeInUp 1s ease-out forwards;
-    }
-
-    .header-hero p {
-      font-size: 1.5rem;
-      font-family: 'M PLUS Rounded 1c', sans-serif;
-      margin-top: 1rem;
-      opacity: 0;
-      transform: translateY(30px);
-      animation: fadeInUp 1s ease-out forwards;
-      animation-delay: 0.3s;
-    }
-
-    .header-hero .btn {
-      margin-top: 2rem;
-      padding: 0.75rem 2rem;
-      font-size: 1.2rem;
-      border-radius: 30px;
-      transition: all 0.3s ease-in-out;
-      opacity: 0;
-      transform: translateY(30px);
-      animation: fadeInUp 1s ease-out forwards;
-      animation-delay: 0.6s;
-    }
-
-    .header-hero .btn:hover {
-      transform: scale(1.05);
-      background-color: #f3c623;
-      color: black;
-    }
-
-    @keyframes fadeInUp {
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    @media (max-width: 768px) {
-      .header-hero h1 {
-        font-size: 2.5rem;
-      }
-
-      .header-hero p {
-        font-size: 1.1rem;
-      }
-
-      .navbar .nav-link {
-        margin-left: 0;
-      }
-    }
-
-    
+.btn-custom:hover {
+  background-color: #000;
+  color: #fff;
+  border: 2px solid #fff;
+}
+.ml12 {
+  text-transform: uppercase;
+  letter-spacing: 0px;
+  font-family: Orbitron;
+}
