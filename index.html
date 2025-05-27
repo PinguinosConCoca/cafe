@@ -56,15 +56,6 @@
           font-family: 'Poppins', sans-serif;
           font-size: 18px;
       }
-      /* efecto del mouse */
-      .mouse-effect {
-          position: fixed;
-          inset: 0;
-          pointer-events: none; /* No afecta la interacción */
-          z-index: -1; /* Se mueve detrás de todo */
-          transition: opacity 0.3s ease;
-          background: radial-gradient(900px at 50% 50%, rgba(216, 29, 78, 0.1), rgba(216, 29, 78, 0.05), transparent 90%);
-      }
 
       /* configuración para el nav-bar */
       .nav-custom {
@@ -72,7 +63,7 @@
           top: 20px;
           left: 50%;
           transform: translateX(-50%);
-          background: rgba(250, 250, 250, 0.2);
+          background: rgba(250, 250, 250, 0.4);
           backdrop-filter: blur(10px);
           border-radius: 50px;
           padding: 5px 10px;
@@ -104,10 +95,9 @@
           position: relative;
           z-index: 1;
           padding-top: 80px;
-          background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), 
-              url("/img/hero-background-2.jpg") 
+          background:
+              url("/img/hero-backgound-2.svg") 
               no-repeat center bottom/cover;
-          position: relative;
       }
       /* Fix para Safari iOS */
       @supports (-webkit-touch-callout: none) {

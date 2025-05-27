@@ -28,11 +28,9 @@
 
     .header-hero {
       position: relative;
-      background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
-                  url('/img/header-coffee.jpg') no-repeat center center/cover;
-      /* background-attachment: fixed; */
       height: 100vh;
-      color: #fff;
+      background-color: #11001c;
+      color: white;
       display: flex;
       align-items: center;
       justify-content: center;
