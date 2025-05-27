@@ -1,106 +1,530 @@
 <!DOCTYPE html>
-<html lang="es">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-
-  <title>Pídeme La Luna - Cafetería de Autor</title>
-  <meta name="description" content="Cafetería boutique donde el café y los sueños se encuentran. Vive la experiencia única de Pídeme La Luna.">
-
-  <!-- Open Graph / Redes sociales -->
-  <meta property="og:title" content="Pídeme La Luna - Cafetería de Autor">
-  <meta property="og:description" content="Café de especialidad, atmósfera mágica y diseño elegante. Conoce Pídeme La Luna.">
-  <meta property="og:image" content="img/header-coffee.jpg">
-  <meta property="og:url" content="https://tusitio.netlify.app"> <!-- Cambia esto cuando subas a Netlify -->
-  <meta name="twitter:card" content="summary_large_image">
-
-  <!-- Favicon -->
-  <link rel="icon" type="image/png" href="img/header-coffee.jpg"> <!-- reemplaza por favicon real si tienes -->
-
-  <!-- Google Fonts según el branding -->
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Infant:wght@400;700&family=M+PLUS+Rounded+1c:wght@400;700&display=swap" rel="stylesheet">
-
-  <!-- Bootstrap -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4Q6Gf2aSP4eDXB8Miphtr37CMZZQ5oXLH2yaXMJ2w8e2ZtHTl7GptT4jmndRuHDT" crossorigin="anonymous">
-
-  <!-- Tu CSS -->
-  <link rel="stylesheet" href="css/styles.css">
-
-  <!-- Preload imagen clave para performance -->
-  <link rel="preload" as="image" href="img/header-coffee.jpg">
-
-</head>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+    <title>Pídeme La Luna - Cafetería de Autor</title>
+    <meta name="description" content="Cafetería boutique donde el café y los sueños se encuentran. Vive la experiencia única de Pídeme La Luna.">
+  
+    <!-- Palabras clave relevantes -->
+    <meta name="keywords" content="ferretería en Guadalajara, ferretería en Zapopan, tlapalería, herramientas, materiales de construcción, pintura, plomería, electricidad, Maas-Ferretería">
+  
+    <!-- Open Graph / Redes sociales -->
+    <meta property="og:title" content="Pídeme La Luna - Cafetería de Autor">
+    <meta property="og:description" content="Café de especialidad, atmósfera mágica y diseño elegante. Conoce Pídeme La Luna.">
+    <meta property="og:image" content="img/header-coffee.jpg">
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="es_MX">
+    <meta property="og:url" content="https://tusitio.netlify.app"> <!-- Cambia esto cuando subas a Netlify -->
+    <meta name="twitter:card" content="summary_large_image">
+  
+     <!-- Ubicación específica usando geo-etiquetas -->
+     <meta name="geo.region" content="MX-JAL">
+     <meta name="geo.placename" content="Guadalajara">
+     <meta name="geo.position" content="20.6736;-103.344">
+     <meta name="ICBM" content="20.6736, -103.344">
+  
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="img/header-coffee.jpg"> <!-- reemplaza por favicon real si tienes -->
+  
+    <!-- Google Fonts según el branding -->
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Infant:wght@400;700&family=M+PLUS+Rounded+1c:wght@400;700&display=swap" rel="stylesheet">
+  
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4Q6Gf2aSP4eDXB8Miphtr37CMZZQ5oXLH2yaXMJ2w8e2ZtHTl7GptT4jmndRuHDT" crossorigin="anonymous">
+  
+    <!-- Tu CSS -->
+    <link rel="stylesheet" href="css/styles.css">
+  
+    <!-- Preload imagen clave para performance -->
+    <link rel="preload" as="image" href="img/header-coffee.jpg">
+  
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400..900&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js" async></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/2.0.2/anime.min.js"></script>
+    <script src="https://unpkg.com/scrollreveal"></script>    
+  
+  </head>
 <body>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
 
-  <!-- Navbar -->
-  <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
-    <div class="container">
-      <a class="navbar-brand" href="#">
-        <img src="/static/images/logo-pideme.png" alt="Pídeme La Luna">
+      body {
+          background-color: #111827;
+          color: #f8f9fa;
+          font-family: 'Poppins', sans-serif;
+          font-size: 18px;
+      }
+      /* efecto del mouse */
+      .mouse-effect {
+          position: fixed;
+          inset: 0;
+          pointer-events: none; /* No afecta la interacción */
+          z-index: -1; /* Se mueve detrás de todo */
+          transition: opacity 0.3s ease;
+          background: radial-gradient(900px at 50% 50%, rgba(216, 29, 78, 0.1), rgba(216, 29, 78, 0.05), transparent 90%);
+      }
+
+      /* configuración para el nav-bar */
+      .nav-custom {
+          position: fixed;
+          top: 20px;
+          left: 50%;
+          transform: translateX(-50%);
+          background: rgba(250, 250, 250, 0.2);
+          backdrop-filter: blur(10px);
+          border-radius: 50px;
+          padding: 5px 10px;
+          z-index: 1000;
+          box-shadow: 0px 4px 10px rgba(250, 250, 250, 0.3);
+      }
+      .nav-custom a {
+          color: #f8f9fa;
+          text-decoration: none;
+          padding: 5px 10px;
+          border-radius: 30px;
+          font-size: 0.9rem;
+          transition: background 0.3s ease;
+          font-weight: bold;
+      }
+      .nav-custom a:hover {
+          background: rgba(250, 250, 250, 0.5);
+      }
+
+      /* hero seccion */
+      .section-full-hero {
+          min-height: 100vh;
+          width: 100%;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          text-align: center;
+          position: relative;
+          z-index: 1;
+          padding-top: 80px;
+          background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), 
+              url("/img/hero-background-2.jpg") 
+              no-repeat center bottom/cover;
+          position: relative;
+      }
+      /* Fix para Safari iOS */
+      @supports (-webkit-touch-callout: none) {
+          .section-full-hero {
+              background-attachment: scroll !important;
+          }
+      }
+      
+      /* primera sección */
+      .section-full {
+          min-height: 100vh;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          text-align: center;
+          position: relative;
+          z-index: 1;
+          padding: 3rem 1rem;
+          /* margin-top: 80px; */
+      }
+      .logo-hero {
+        width: 240px;      /* Más ancho */
+        height: auto;
+        margin-bottom: 1rem;
+        filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.25));
+        transition: transform 0.3s ease;
+      }
+
+      .logo-hero:hover {
+        transform: scale(1.02);
+      }
+      /* segunda sección */
+      .second-section {
+        background: linear-gradient(to bottom, white, white);
+        min-height: 100vh; /* Para que cubra toda la pantalla */
+        margin: 0;
+        padding: 0;
+          color: black;
+      }
+      /* fuerza la optimización de renderizado en móviles */
+      .ml12 .letter {
+        /* Fuerza la optimización de renderizado en móviles */
+        will-change: transform, opacity;
+        backface-visibility: hidden;
+      }
+      .text-change {
+        transition: opacity 0.5s ease;
+      }
+      .btn-custom {
+          background-color: #fff;
+          color: #000;
+          border-radius: 50px;
+          padding: 12px 30px;
+          font-size: 1.2rem;
+          transition: background-color 0.6s ease-in-out, color 0.6s ease-in-out;
+        }
+
+        .btn-custom:hover {
+          background-color: #000;
+          color: #fff;
+          border: 2px solid #fff;
+        }
+        .ml12 {
+          text-transform: uppercase;
+          letter-spacing: 0px;
+          font-family: Orbitron;
+        }
+        
+  </style>
+<!-- seccion navbar -->
+<nav class="nav-custom d-flex justify-content-center">
+      <a class="nav-link d-flex flex-column align-items-center" href="#inicio">
+        <img style="max-width: 26px;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAABxElEQVRIS9WWPyhFURzH30tikjIoBibFbFBKGUwkFqQkkxisBuIZZWGyGEiJDAZhY2K3ymLwJ7HKIj7fOqfuO+9d95z7rl5Offq9e+85v8/93XPPuS+fq1LLV8mbSyvWuDlz09vE79AC0og15gAmjOyQOBkqDxW7UltosDxErL57MGVsDya2mbhPnPat3FfsVvqIoNcIr4mtoY/dRxwnjVYcLE8SJ0ntHOtxB8l/E/tKU8njxKHSYHk5cVppkNwVVyr1lkfF5TaHNTIVQrdD01/jViNjizaZqHicTroYbVmKlXcMjvUjKh7i+PSPxYPkP3fFOu6AFrgyN5BVxf3ke4I7W1jccrKfOYmF7lSfwRPYiZnzWc4Pgz6TZ6D5tXNc4vERb5BA22MTvEMP3DvyTo5voBFeoR0WKxUXSLAAW0b2RlwCzVUdjMAKNJjrM8Rd0LiKKlaCGriEPqdS91CPWC+pWiZiJaqHTdBcuk3vxDosw1fWYivr4sco1JoTH8QjsJ9J2y+zihOecsnl/yV+4f6bQ0uM6f/MeW1KRS1uHUeXT6X+eRJoU/ESq1M3DIDWapr2yaALuC03OOk/Vxqh15iqiX8ARJJ9H2EPnScAAAAASUVORK5CYII=" alt="Home Icon">
+        <span class="fw-light small">Inicio</span>
       </a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse justify-content-end" id="navbarContent">
-        <ul class="navbar-nav">
-          <li class="nav-item">
-            <a class="nav-link" href="#inicio">Inicio</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="docs/catalogo-pideme-la-luna.pdf">Menú</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#contacto">Contacto</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#ubicacion">Ubicación</a>
-          </li>
+      <a class="nav-link d-flex flex-column align-items-center" href="#ubicacion">
+        <img style="max-width: 26px;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAACL0lEQVRIS9WWQUgVQRjH35OwS4a3IkoMPGR1KMpb6CMUJIQOepDonpYKHYtAS7wGCQblLRIpFckQ9GQilUclSEzQq0hFFNXBon7/x6wM++a9fbP74OEHP2Z39vu+/zezO7OTTpXJ0mXSTfkKX6TQNlPsR9oJ+Ben+GKFz5P8GZwNiXzmvgde+IoXI3yKpO+hOk9yjfgqvPYRjxLW8w9wxiR9SDsKX6AThqAKvsNJ+FqseJRwI4kWTbIHtP2hxFe4nzV9t2gfxxE+TFAfHLCCL3AdfEwjXOudhu0OHZWwAq9CD8e5X3cVY4/4Ng6aylLaFMk6ooQHHFOZtAi9psy+Et6g2pvwJ+bQv5l3nxNuv2PXVGu53IspWjAsSvg+0SpIdhzqEhSxS+w7yG6xPsJb+NcmEFboNdAS8xKO9TMIFbo3gz4jDoRV8VOTcIZWW6bLhumchoMwZxwSCY+R5LpJtECbySN8if63UA/6hcoSCW+T4BhoBpR8ySE8T1+r6bd3xETCytcFT0ziy7SDcA52YBL0M/kFh0B7wdFSjFg5fkIDrDlGG3RVcPES2i2fxCNWrh/QC8/hb6iA09w/guZQv1P4Lk7aqWyzN5B8y0mjX4ZVqAH9SnUocJlTuAnPNzGEC8x2ziOnsLy6QT/2EyakmBGXRLhQEi2jIz4qDt8b9GU3n6gzlx2rY5E+mLj2iUCtBB0MvYTlrwN9C2gb9LFNnHX4/x0E+YzYRyjSt2zC/wFconwfevdFIwAAAABJRU5ErkJggg==" alt="Services Icon">
+        <span class="fw-light small">Ubicación</span>
+      </a>
+      <a class="nav-link d-flex flex-column align-items-center" href="#promo">
+        <img style="max-width: 26px;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAACo0lEQVRIS8WWSaiOURjH7y1TKcNa2ckQKWMoNmRKKEOSiIgVpVwsbGQoMmwQNoZISUiGJMqcKMOC3bW0EElkKH6/23n13dP7vee8Nt9T/857zjP8z3uec55z2ttaJO0t4m2rSzydiQ4AF6MJL6LfE5zP/ZE6xFMJeg/o8wx0gN5gJxgXCLW5n0OeS9yDYG/A0ETQd+hHgV8p8mbEfXHcCHqFACNoF6eCBf0F2rfh+yftIfAt9m1GvAHDI5lEKbN1GJzIJd6G4e5UxEz9duz25BJvLTNm7D0YCPplkmrmT+zNIfZYnALLIuPN9A+APsDjNLdBr737YHzJhM4xtgp023BxjqdgcBIMKwkg4Y8wvpD2Uvh+TjsJGOs4WFni62ZbDR4XukbieQxeLXEqhlbwcTZ0bJeDL2A06AQeuQdgYkWM2ehuqq9D/Ad7l3QIcGUU//xy+N5PazqqZA7KGzGx/YdgcsK5UB/mY1PozCoCVvi6zP9ixzkeg9KcpeQlBm4kN8wgYFWzhlfJWJQvCoOYeAKKp4kAX9FbFjuBeXWV9EuJNtb4LomJHzHmDq2SBSivBIODtMVyp4iNXeyNbsSey2sJ78a8FvZuutvgA7Cee+yaiXvhVvzH6xk4WuFk7t0cFv7BwDybV6/FHcEvdSSd7PWY2H5VATmNfk0gaMzrfMaK8+9EPpVM3gKir8vdJWW3kyXzDFhaEsDN8aphApo8ATOBm+4YWBv5+SqxmlWWzMKn7u1kBfsMTEEs2ZeEjl5lu0qC/M9QrWuxZQ8Bnz6eT/OtDAdLMn+38enjbebT53vsm/vYcwKvQc5jbyR2v1OTzCU2zjRwFxTP2y0h+D5an7cWEp+3Xo1JqUNssBmgP4gf9KbhI7iTZAwGdYlz4ybtWkb8F6eGdh8WNiwnAAAAAElFTkSuQmCC" alt="Promo Icon">
+        <span class="fw-light small">Promo</span>
+      </a>
+      <a class="nav-link d-flex flex-column align-items-center" href="#contacto">
+        <img style="max-width: 26px;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAACv0lEQVRIS9WWW4hPQRzHd93KpcUDyeWNdl2KcokSS0SIknsSTyi3RBGlFClECHlQQu4ePBAPWkSuRe6XIrW1L0IetA8un2/9jmanmTnnv/7aTH2aM7/5/eY7c87M/E5lRQuVyhbSrSiH8Hwm3xY+wAP4XmQx5RC+gdAYE/tp4nuoz6QmkBLeQOA2OALLE4O4wq7bHRrT4VMoNiTcDscTMNsJ2MLz1oh4e+x9YYjFTKVuZb5vqcdBvR/rC3fE4TqMCIho1YcLfD9NYj9MNt9X1KPgixvrC8tBryhW5tBxzutcTLs3XIQX1qdxd8Faa1+inpESHk3nrYTwD/qmwDXHp47nsda+Sr0JHln7AvVMex5O/TCL81c8iI6nCWF1NcJQeG5+rrBMv2Ak3Ide8B503E7CwphwFzo+5wirexXoO6poc/WHFbDEbFrxMHs+Rr0ItLu72cSCF8hHOvskxB/Tp3P7LeCzF9tqsw+k1jdfYKuVWTv/iR5Cx+kU9nkRYX2jidBkhzq+Wnm2wbTK41ADL81HR/R8TNidoat/z0RDK8389NqvWOMg9VnoAJfNdiAlXEVnA2gQt1TTeBN5EyWbY1emLoql3mjraO8uWSESEBMegL+OVXb1Kfwr6HvpbYRKd4zLoA5u5k0wlSSUYdZ4AzyjXQv+xd8V223Q5tIlo/N6OiWeEu5E4Gvo6Q0g2zR4Z3bd71pldm4zd30qZbZgycvHg4nS3a2d6Rbl3aOwHQ7BpMj4G7HvCPXlCStGq9MlX8Q3pKEjtNLvKDrYXAKVo9vEXl2OXZlqvetTVFgxurGUEjs3Q1wnQnngTylFWEE9YB+4fydF5rEZJ/1GNVs4C1Te3glKf3lFOXmW71Tqiv34fhgmgH4OxoO/++9iqwXl8Cblb4XdwVrT0H2uGywrysvBpFJO4bxX/s9W/H8I/wbae3AftPmoIgAAAABJRU5ErkJggg==" alt="Contact Icon">
+        <span class="fw-light small">Contacto</span>
+      </a>
+</nav>
+<script>
+  function getLuminance(color) {
+    const match = color.match(/^rgb\((\d+),\s*(\d+),\s*(\d+)\)$/);
+    if (match) {
+      const r = parseInt(match[1], 10);
+      const g = parseInt(match[2], 10);
+      const b = parseInt(match[3], 10);
+      return 0.2126 * r + 0.7152 * g + 0.0722 * b;
+    }
+    return 255;
+  }
+
+  function adjustNavbarColors() {
+    const navbar = document.querySelector('.nav-custom');
+    if (!navbar) return;
+
+    const bgColor = window.getComputedStyle(navbar).backgroundColor;
+    const luminance = getLuminance(bgColor);
+    const isDark = luminance < 128;
+
+    document.querySelectorAll('.nav-link').forEach(link => {
+      const span = link.querySelector('span');
+      if (span) {
+        span.style.color = isDark ? 'white' : 'black';
+      }
+
+      const img = link.querySelector('img');
+      if (img) {
+        img.style.filter = isDark ? 'invert(1)' : 'invert(0)';
+      }
+    });
+  }
+
+  document.addEventListener('DOMContentLoaded', adjustNavbarColors);
+  window.addEventListener('resize', adjustNavbarColors);
+</script>
+
+<!-- Sección Hero -->
+<section id="inicio" class="section-full-hero container-fluid">
+    <div class="container d-flex flex-column justify-content-center align-items-center text-center h-100">
+      <div class="text-center mb-0">
+        <img src="/img/logo-free.png" alt="Logo Pideme-la-luna" class="img-fluid logo-hero">
+      </div>
+      <h1 class="display-3 fw-bold text-white ml12">Bienvenido a PÍDEME-LA-LUNA</h1>
+      <p class="lead mt-4 text-white px-4 py-2 rounded-pill bg-light bg-opacity-10 backdrop-blur">
+        Experiencias que trascienden el sabor.
+      </p>    
+      <a href="https://wa.me/5213328658484?text=Buen%20día%2C%20me%20interesa%20conocer%20más%20sobre%20los%20servicios%2C%20catálogo%20y%20disponibilidad.%20¿Podrías%20compartirme%20más%20información%3F"
+        target="_blank"
+        class="btn btn-custom btn-lg mt-4 mb-5 shadow">
+        <i class="bx bxl-whatsapp me-2"></i> Mandar WhatsApp
+      </a>
+    </div>
+</section>
+<script>
+  var textWrapper = document.querySelector('.ml12');
+  textWrapper.innerHTML = textWrapper.textContent.replace(/\S/g, "<span class='letter'>$&</span>");
+
+  anime.timeline({loop: true})
+  .add({
+      targets: '.ml12 .letter',
+      translateX: [40,0],
+      translateZ: 0,
+      opacity: [0,1],
+      easing: "easeOutExpo",
+      duration: 1100,
+      delay: (el, i) => 500 + 30 * i
+  }).add({
+      targets: '.ml12 .letter',
+      translateX: [0,-30],
+      translateZ: 0,
+      opacity: [1,0],
+      easing: "easeInExpo",
+      duration: 1100,
+      delay: (el, i) => 100 + 30 * i
+  });       
+  ScrollReveal({reset: true}).reveal('.btn-1', {delay: 150}); 
+  ScrollReveal({reset: true}).reveal('.btn-2', {delay: 450}); 
+</script>
+
+
+<!-- seccion mapas -->
+<section id="ubicacion" class="section-full py-5">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-lg-6 text-center text-lg-start">
+        <h2 class="fw-bold text-warning ml12"><box-icon name='map-pin' type='solid' color='#ffc300'></box-icon> Visita Nuestra Sucursal:</h2>
+        <p class="lead">San José #133, Santa Isabel, El Palomar, 45645, Jal.</p>
+        <p class="fw-bold fs-4">Selecciona una sucursal para ver su ubicación:</p>
+
+        <!-- Horarios sin fondo blanco -->
+        <h5 class="fw-bold text-warning mt-4 ml12"><box-icon name='time-five' color='#ffc300'></box-icon> Horarios:</h5>
+        <ul class="list-unstyled">
+          <li><box-icon name='calendar' color='#ffc300'></box-icon> Lunes a Viernes: <span class="fw-bold" style="color: #ffc300;">8:00 AM - 1:30 PM</span></li>
+          <li><box-icon name='calendar-alt' color='#ffc300'></box-icon> Sábado: <span class="fw-bold" style="color: #ffc300;">6:00 PM - 11:00 PM</span></li>
+          <li><box-icon name='calendar-event' color='#ffc300'></box-icon> Domingo: <span class="fw-bold" style="color: #ffc300;">6:00 PM - 11:00 PM</span></li>
         </ul>
+
+        <!-- Botones de selección de sucursal -->
+        <div class="d-grid gap-2 mt-4">
+          <a href="https://maps.app.goo.gl/Z5rAw9SUtsxa5BUE9" 
+            target="_blank" 
+            class="btn btn-light rounded-5 btn-lg">
+            <box-icon name='map' type='solid' color='#ffc300'></box-icon> Abrir Google Maps
+          </a>
+        </div>
+      </div>
+
+      <!-- Columna del Mapa -->
+      <div class="col-lg-6 mt-4">
+        <div class="map-container shadow-lg rounded-4 overflow-hidden border border-2">
+          <iframe id="branchMap"
+            width="100%"
+            height="400px"
+            style="border:0; min-height: 300px;"
+            loading="lazy"
+            allowfullscreen
+            referrerpolicy="no-referrer-when-downgrade"
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1511.7047437517215!2d-103.45636612701263!3d20.580860132371427!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8428ab3d16e5662b%3A0xc64406d0ee47f6cb!2sP%C3%ADdeme%20la%20luna!5e0!3m2!1ses-419!2smx!4v1748323055326!5m2!1ses-419!2smx">
+          </iframe>
+        </div>
+      </div>            
+    </div>
+  </div>
+</section>
+<script>
+  document.querySelectorAll(".branch-btn").forEach(button => {
+    button.addEventListener("click", function() {
+      document.getElementById("branchMap").src = this.dataset.map;
+    });
+  });
+</script>
+<style>
+  #ubicacion {
+    background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0) 40%, #111827), url('img/hero-background-3.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    position: relative;
+    z-index: 1;
+  }
+
+  /* Opcional: oscurecer el fondo para que el texto resalte */
+  #ubicacion::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.4); /* Ajusta opacidad si quieres más oscuro o más claro */
+    z-index: -1;
+  }
+</style>
+
+<!-- seccion promo -->
+<section id="promo" class="section-full py-5">
+  <div class="container">
+    <div class="row align-items-center">
+      <!-- Columna de Texto -->
+      <div class="col-md-6 mb-4 mb-md-0">
+        <p class="text-uppercase fw-bold mb-2 text-danger ml12" style="font-size: 2.5rem; letter-spacing: .1rem;">
+          <box-icon name='star' type='solid' color='#dc3545'></box-icon> Servicios Especiales
+        </p>
+        <h2 class="fw-bold display-3 text-white">
+          <box-icon name='discount' type='solid' color='#ffc300'></box-icon> Haz de tu evento algo inolvidable.
+        </h2>
+        <p class="lead text-warning" style="font-size: 1.25rem;">
+          Conoce los servicios exclusivos como: 
+          <span id="randomWord" class="text-danger text-change">herramientas</span> y más.
+        </p>
+      </div>
+
+      <!-- Columna de Botones -->
+      <div class="col-md-6 d-flex flex-column align-items-start">
+        <a href="docs/catalogo-pideme-la-luna.pdf" target="_blank"
+           class="btn btn-info mb-2 w-100 btn-lg shadow rounded-5 d-flex align-items-center justify-content-center">
+          <box-icon name='cart' type='solid' color='#fff'></box-icon> <span class="ms-2">Nuestra Historia, Tu Experiencia</span>
+        </a>
+        <a href="tel:+5213328658484" 
+           class="btn btn-outline-success w-100 btn-lg shadow rounded-5 d-flex align-items-center justify-content-center">
+          <box-icon name='whatsapp' type='logo' color='#28a745'></box-icon> <span class="ms-2">Cotizar Servicio</span>
+        </a>
+      </div>      
+    </div>
+  </div>
+</section>
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const words = ["barra de café", "carrito de crepas", "barra de carajillos", "barra de tapioca"];
+    let index = 0;
+    const randomWord = document.getElementById("randomWord");
+
+    setInterval(() => {
+      randomWord.style.transition = "opacity 0.5s";
+      randomWord.style.opacity = 0;
+      setTimeout(() => {
+        randomWord.textContent = words[index];
+        randomWord.style.opacity = 1;
+        index = (index + 1) % words.length;
+      }, 500);
+    }, 2000);
+  });
+</script>
+
+<!-- Sección Contacto -->
+<section id="contacto" class="section-full py-5" style="background: linear-gradient(to bottom, #111827, #ffffff);">
+  <div class="container">
+    <div class="row align-items-center">
+      <div class="col-12 text-center mb-5">
+        <p class="text-uppercase fw-bold mb-2 text-warning ml12" style="font-size: 2.5rem; letter-spacing: .1rem;">
+          <box-icon name='phone-call' type='solid' color='#dc3545'></box-icon> Contacto
+        </p>
+        <h2 class="fw-bold display-3 text-white">¿Necesitas Ayuda?</h2>
+        <p class="lead text-warning" style="font-size: 1.25rem;">
+          Llámanos o visítanos en cualquiera de nuestras sucursales.
+        </p>
+      </div>
+
+      <!-- Tarjetas de sucursales -->
+      <div class="col-12 d-flex justify-content-center flex-wrap gap-4">
+        <div class="card shadow-lg rounded-5 p-5 text-center" style="width: 300px; cursor: pointer; transition: transform 0.3s ease-in-out; background-image: url('img/blue.jpg'); background-size: cover; background-position: center;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
+          <div class="d-flex flex-column align-items-center mb-3">
+            <box-icon name='home' type='solid' color='#00b4d8' style="font-size: 1rem;"></box-icon>
+            <h4 class="fw-bold text-info mt-2">Palomar</h4>
+          </div>
+          <p class="text-white">San José #133, Santa Isabel, El Palomar, 45645 Palomar, Jal.</p>
+          <button class="btn btn-primary rounded-5 mt-2" data-bs-toggle="collapse" data-bs-target="#infoSucursal4">
+            <div class="d-flex align-items-center justify-content-center">
+              <box-icon name='info-circle' type='solid' color='#fff' style="font-size: 1rem;"></box-icon>
+              <span class="ms-2" style="font-size: 1rem;">Más Información</span>
+            </div>
+          </button>
+          <div class="collapse mt-3" id="infoSucursal4">
+            <p class="text-primary">Teléfono: <span class="fw-bold">33 3663 2537</span></p>
+            <a href="tel:+523328658484" class="btn btn-success rounded-5 w-100">
+              <div class="d-flex align-items-center justify-content-center">
+                <box-icon name='phone' type='solid' color='#28a745' style="font-size: 1rem;"></box-icon>
+                <span class="ms-2" style="font-size: 1rem;">Llamar</span>
+              </div>
+            </a>            
+          </div>
+        </div>
       </div>
     </div>
-  </nav>
+  </div>
+</section>
 
-  <!-- Header -->
-  <header class="header-hero" id="inicio">
-    <div class="container">
-      <h1>Pídeme La Luna</h1>
-      <p>Experiencias que trascienden el sabor.</p>
-      <a href="docs/catalogo-pideme-la-luna.pdf" class="btn btn-light text-dark shadow">Ver Menú</a>
+<!-- footer -->
+<footer class="bg-white text-dark py-5 p-5">
+  <div class="container">
+    <div class="row">
+
+      <!-- Logo y descripción -->
+      <div class="col-md-4 mb-4 mt-5">
+        <img src="img/logo-free-black.png" alt="Reform" class="mb-3" style="max-width: 150px;">
+      </div>
+
+      <!-- Enlaces rápidos -->
+      <div class="col-md-2 mb-4 mt-5">
+        <h5 class="ml12 fw-bold mb-3">Navegación</h5>
+        <ul class="list-unstyled">
+          <li><a href="#inicio" class="text-muted text-decoration-none">Inicio</a></li>
+          <li><a href="#ubicacion" class="text-muted text-decoration-none">Ubicación</a></li>
+          <li><a href="#promo" class="text-muted text-decoration-none">Promociones</a></li>
+          <li><a href="#contacto" class="text-muted text-decoration-none">Contacto</a></li>
+        </ul>
+      </div>
+
+      <!-- Información de contacto -->
+      <div class="col-md-3 mb-4 mt-5">
+        <h5 class="ml12 fw-bold mb-3">Contacto</h5>
+        <ul class="list-unstyled text-muted small">
+          <li>📍 Guadalajara & Zapopan, Jalisco</li>
+          <li>📞 332 865 8484</li>
+          <li>✉️  pidemelalunagdl@gmail.com</li>
+          <li><a href="https://wa.me/5213328658484" target="_blank" class="text-decoration-none text-success fw-bold">Mandar Whatsapp</a></li>
+        </ul>
+      </div>
+
+      <!-- Redes sociales -->
+      <div class="col-md-3 mb-4 mt-5">
+        <h5 class="ml12 fw-bold mb-3">Síguenos</h5>
+        <div class="d-flex gap-3">
+          <a href="#" class="text-muted"><i class="bx bxl-facebook-circle fs-3"></i></a>
+          <a href="#" class="text-muted"><i class="bx bxl-instagram fs-3"></i></a>
+          <a href="#" class="text-muted"><i class="bx bxl-tiktok fs-3"></i></a>
+          <a href="#" class="text-muted"><i class="bx bxl-youtube fs-3"></i></a>
+        </div>
+      </div>
+
     </div>
-  </header>
 
-  <!-- <section id="ubicacion" class="py-5 text-white" style="background: url('img/ubicacion.jpg') no-repeat center center / cover;">
-    <div class="container">
-        <h2 class="text-uppercase fw-bold text-center mb-5" style="letter-spacing: 2px;">¿Dónde Estamos?</h2>
-        
-        <div class="row align-items-center g-4">
+    <hr>
 
-        <div class="p-4 rounded-5 shadow" style="
-        background-color: rgba(0, 0, 0, 0.1);
-        backdrop-filter: blur(12px);
-        -webkit-backdrop-filter: blur(12px);
-        ">
-        <h5 class="mb-3">Sucursal Santa Isabel</h5>
-        <p class="mb-2">San José 133A, Colonia Santa Isabel, Guadalajara, Jalisco.</p>
-        <p class="mb-4">Haz tu reservación por llamada. Estaremos listos para recibirte.</p>
-        <a href="tel:3328658484" class="btn btn-light px-4 py-2 rounded-5">
-            📞 Reserva tu lugar
-        </a>
-        </div>
-
-        <div class="col-md-6">
-            <div class="ratio ratio-4x3 rounded-5 shadow">
-            <iframe 
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3734.521048038103!2d-103.32950038585705!3d20.67235648618967!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8428ad6120f3481d%3A0x22a5e2d2921b8751!2sSan%20Jos%C3%A9%20133A%2C%20Santa%20Isabel%2C%2045400%20Guadalajara%2C%20Jal.!5e0!3m2!1ses!2smx!4v1715809200000"
-                width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy">
-            </iframe>
-            </div>
-        </div>
-        </div>
+    <!-- Derechos -->
+    <div class="text-center text-muted small mt-3">
+      © 2025 PÍDEME LA LUNA. Todos los derechos reservados.
     </div>
-    </section> -->
+  </div>
+</footer>
 
+<!-- Script para el efecto de luz solo en el primer section -->
+<script>
+document.addEventListener("mousemove", function(event) {
+    const effect = document.querySelector(".mouse-effect");
 
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js"></script>
+    // Detecta si el cursor está sobre la sección que deseas excluir
+    const excludedSection = document.querySelector(".second-section");
+    const rect = excludedSection.getBoundingClientRect();
+    const mouseX = event.clientX;
+    const mouseY = event.clientY;
+
+    const isInExcludedSection = (
+        mouseX >= rect.left &&
+        mouseX <= rect.right &&
+        mouseY >= rect.top &&
+        mouseY <= rect.bottom
+    );
+
+    if (!isInExcludedSection) {
+        effect.style.background = `radial-gradient(600px at ${mouseX}px ${mouseY}px, rgba(216, 29, 78, 0.1), rgba(216, 29, 78, 0.02), transparent 99%)`;
+    } else {
+        effect.style.background = "none";
+    }
+});
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
