@@ -7,6 +7,16 @@ body {
   font-size: 18px;
 }
 
+.beige {
+  color: #f1df97
+}
+.verde {
+  color: #3c573e;
+}
+.cafe {
+  color: #4b3621;
+}
+
 /* configuración para el nav-bar */
 .nav-custom {
   position: fixed;
