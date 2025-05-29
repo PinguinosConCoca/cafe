@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
   
-    <title>Pídeme La Luna - Cafetería de Autor</title>
+    <title>Pídeme La Luna</title>
     <meta name="description" content="Cafetería boutique donde el café y los sueños se encuentran. Vive la experiencia única de Pídeme La Luna.">
   
     <!-- Palabras clave relevantes -->
@@ -152,42 +152,45 @@
 </script>
 
 
-<!-- seccion mapas -->
-<section id="ubicacion" class="section-full py-5" style="background-color: #1d1c38;">
-  <div class="container">
+<!-- sección mapas con animaciones -->
+<link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+<script>AOS.init();</script>
+<section id="ubicacion" class="section-full py-5 position-relative overflow-hidden" style="background-color: #1d1c38;">
+  
+  <!-- Fondo opcional animado con particles.js -->
+  <div id="particles-js" class="position-absolute w-100 h-100 top-0 start-0 z-n1"></div>
+
+  <div class="container position-relative">
     <div class="row justify-content-center">
-      <div class="col-lg-6 text-center text-lg-start">
+      <div class="col-lg-6 text-center text-lg-start" data-aos="fade-right">
         <h2 class="fw-bold ml12 beige"><box-icon name='map-pin' type='solid' color='#f1df97'></box-icon> Visita Nuestra Sucursal:</h2>
         <p class="lead">San José #133, Santa Isabel, El Palomar, 45645, Jal.</p>
         <p class="fw-bold fs-4 verde">Selecciona una sucursal para ver su ubicación:</p>
 
-        <!-- Horarios sin fondo blanco -->
+        <!-- Horarios animados -->
         <h5 class="fw-bold mt-4 ml12 beige"><box-icon name='time-five' color='#f1df97'></box-icon> Horarios:</h5>
         <ul class="list-unstyled">
-          <li><box-icon name='calendar' color='#f1df97'></box-icon> Lunes a Viernes: <span class="fw-bold" style="color: #f1df97;">8:00 AM - 1:30 PM</span></li>
-          <li><box-icon name='calendar-alt' color='#f1df97'></box-icon> Sábado: <span class="fw-bold" style="color: #f1df97;">6:00 PM - 11:00 PM</span></li>
-          <li><box-icon name='calendar-event' color='#f1df97'></box-icon> Domingo: <span class="fw-bold" style="color: #f1df97;">6:00 PM - 11:00 PM</span></li>
+          <li><box-icon name='calendar' color='#f1df97' class="icon-pulse"></box-icon> Lunes a Viernes: <span class="fw-bold" style="color: #f1df97;">8:00 AM - 1:30 PM</span></li>
+          <li><box-icon name='calendar-alt' color='#f1df97' class="icon-pulse"></box-icon> Sábado: <span class="fw-bold" style="color: #f1df97;">6:00 PM - 11:00 PM</span></li>
+          <li><box-icon name='calendar-event' color='#f1df97' class="icon-pulse"></box-icon> Domingo: <span class="fw-bold" style="color: #f1df97;">6:00 PM - 11:00 PM</span></li>
         </ul>
 
-        <!-- Botones de selección de sucursal -->
-        <div class="d-grid gap-2 mt-4">
-          <a href="https://maps.app.goo.gl/Z5rAw9SUtsxa5BUE9" 
-            target="_blank" 
-            class="btn btn-light btn-custom rounded-5 btn-lg">
+        <!-- Botón Google Maps -->
+        <div class="d-grid gap-2 mt-5">
+          <a href="https://maps.app.goo.gl/Z5rAw9SUtsxa5BUE9" target="_blank" class="btn btn-light btn-custom rounded-5 btn-lg">
             <box-icon name='map' type='solid' color='#3c573e'></box-icon> Abrir Google Maps
           </a>
         </div>
       </div>
 
-      <!-- Columna del Mapa -->
-      <div class="col-lg-6 mt-4">
+      <!-- Mapa con animación -->
+      <div class="col-lg-6 mt-2" data-aos="zoom-in" data-aos-delay="900">
         <div class="map-container shadow-lg rounded-4 overflow-hidden border border-2">
           <iframe id="branchMap"
-            width="100%"
-            height="400px"
+            width="100%" height="400px"
             style="border:0; min-height: 300px;"
-            loading="lazy"
-            allowfullscreen
+            loading="lazy" allowfullscreen
             referrerpolicy="no-referrer-when-downgrade"
             src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1511.7047437517215!2d-103.45636612701263!3d20.580860132371427!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8428ab3d16e5662b%3A0xc64406d0ee47f6cb!2sP%C3%ADdeme%20la%20luna!5e0!3m2!1ses-419!2smx!4v1748323055326!5m2!1ses-419!2smx">
           </iframe>
@@ -196,13 +199,24 @@
     </div>
   </div>
 </section>
-<script>
-  document.querySelectorAll(".branch-btn").forEach(button => {
-    button.addEventListener("click", function() {
-      document.getElementById("branchMap").src = this.dataset.map;
-    });
-  });
-</script>
+<style>
+  /* Pulse animation */
+  @keyframes pulse {
+    0%, 100% { transform: scale(1); opacity: 1; }
+    50% { transform: scale(1.15); opacity: 0.7; }
+  }
+  .icon-pulse {
+    animation: pulse 2.5s infinite ease-in-out;
+  }
+
+  /* Hover button effect */
+  .btn-custom:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 15px #f1df97;
+    transition: 0.3s ease;
+  }
+</style>
+
 
 <!-- seccion promo -->
 <section id="promo" class="section-full py-5">
