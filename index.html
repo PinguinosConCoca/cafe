@@ -432,12 +432,12 @@ document.addEventListener("mousemove", function(event) {
       targets: "#wave-morph",
       d: [{ value: paths[(current + 1) % paths.length] }],
       easing: "easeInOutQuad",
-      duration: 8000,
+      duration: 2500,
       direction: "alternate",
       loop: true,
       complete: () => {
         current = (current + 1) % paths.length;
-        setTimeout(animateWave, 1000);
+        setTimeout(animateWave, 800);
       }
     });
   }
