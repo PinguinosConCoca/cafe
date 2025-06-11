@@ -55,3 +55,31 @@ body {
   will-change: transform;
   transform: translateZ(0);
   }
+
+  /* carta florecente */
+  .neon-border {
+  transform: scale(1.02);
+  box-shadow: 0 0 35px 5px rgba(29, 28, 56, 0.85);
+  backdrop-filter: blur(2px); 
+  }
+
+  .neon-border::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: 2rem;
+    padding: 2px;
+    background: linear-gradient(135deg, #00f0ff, #1d1c38, #ffc6ff);
+    background-size: 300% 300%;
+    animation: pulseBorder 4s ease infinite;
+    z-index: -1;
+    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: destination-out;
+    mask-composite: exclude;
+  }
+
+  @keyframes pulseBorder {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+  }
