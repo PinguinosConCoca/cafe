@@ -44,280 +44,119 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
   
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
-    <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js" async></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/2.0.2/anime.min.js"></script>
-    <script src="https://unpkg.com/scrollreveal"></script>    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">   
   
   </head>
 <body>
-<!-- Código protegido. Queda estrictamente prohibido copiar o distribuir sin autorización legal. -->
-
-<!-- seccion navbar -->
-<nav class="nav-custom d-flex justify-content-center">
-      <a class="nav-link d-flex flex-column align-items-center" href="#inicio">
-        <img style="max-width: 26px;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAABxElEQVRIS9WWPyhFURzH30tikjIoBibFbFBKGUwkFqQkkxisBuIZZWGyGEiJDAZhY2K3ymLwJ7HKIj7fOqfuO+9d95z7rl5Offq9e+85v8/93XPPuS+fq1LLV8mbSyvWuDlz09vE79AC0og15gAmjOyQOBkqDxW7UltosDxErL57MGVsDya2mbhPnPat3FfsVvqIoNcIr4mtoY/dRxwnjVYcLE8SJ0ntHOtxB8l/E/tKU8njxKHSYHk5cVppkNwVVyr1lkfF5TaHNTIVQrdD01/jViNjizaZqHicTroYbVmKlXcMjvUjKh7i+PSPxYPkP3fFOu6AFrgyN5BVxf3ke4I7W1jccrKfOYmF7lSfwRPYiZnzWc4Pgz6TZ6D5tXNc4vERb5BA22MTvEMP3DvyTo5voBFeoR0WKxUXSLAAW0b2RlwCzVUdjMAKNJjrM8Rd0LiKKlaCGriEPqdS91CPWC+pWiZiJaqHTdBcuk3vxDosw1fWYivr4sco1JoTH8QjsJ9J2y+zihOecsnl/yV+4f6bQ0uM6f/MeW1KRS1uHUeXT6X+eRJoU/ESq1M3DIDWapr2yaALuC03OOk/Vxqh15iqiX8ARJJ9H2EPnScAAAAASUVORK5CYII=" alt="Home Icon">
-        <span class="fw-light small text-white">Inicio</span>
-      </a>
-      <a class="nav-link d-flex flex-column align-items-center" href="#ubicacion">
-        <img style="max-width: 26px;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAACL0lEQVRIS9WWQUgVQRjH35OwS4a3IkoMPGR1KMpb6CMUJIQOepDonpYKHYtAS7wGCQblLRIpFckQ9GQilUclSEzQq0hFFNXBon7/x6wM++a9fbP74OEHP2Z39vu+/zezO7OTTpXJ0mXSTfkKX6TQNlPsR9oJ+Ben+GKFz5P8GZwNiXzmvgde+IoXI3yKpO+hOk9yjfgqvPYRjxLW8w9wxiR9SDsKX6AThqAKvsNJ+FqseJRwI4kWTbIHtP2hxFe4nzV9t2gfxxE+TFAfHLCCL3AdfEwjXOudhu0OHZWwAq9CD8e5X3cVY4/4Ng6aylLaFMk6ooQHHFOZtAi9psy+Et6g2pvwJ+bQv5l3nxNuv2PXVGu53IspWjAsSvg+0SpIdhzqEhSxS+w7yG6xPsJb+NcmEFboNdAS8xKO9TMIFbo3gz4jDoRV8VOTcIZWW6bLhumchoMwZxwSCY+R5LpJtECbySN8if63UA/6hcoSCW+T4BhoBpR8ySE8T1+r6bd3xETCytcFT0ziy7SDcA52YBL0M/kFh0B7wdFSjFg5fkIDrDlGG3RVcPES2i2fxCNWrh/QC8/hb6iA09w/guZQv1P4Lk7aqWyzN5B8y0mjX4ZVqAH9SnUocJlTuAnPNzGEC8x2ziOnsLy6QT/2EyakmBGXRLhQEi2jIz4qDt8b9GU3n6gzlx2rY5E+mLj2iUCtBB0MvYTlrwN9C2gb9LFNnHX4/x0E+YzYRyjSt2zC/wFconwfevdFIwAAAABJRU5ErkJggg==" alt="Services Icon">
-        <span class="fw-light small text-white">Ubicación</span>
-      </a>
-      <a class="nav-link d-flex flex-column align-items-center" href="#promo">
-        <img style="max-width: 26px;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAACo0lEQVRIS8WWSaiOURjH7y1TKcNa2ckQKWMoNmRKKEOSiIgVpVwsbGQoMmwQNoZISUiGJMqcKMOC3bW0EElkKH6/23n13dP7vee8Nt9T/857zjP8z3uec55z2ttaJO0t4m2rSzydiQ4AF6MJL6LfE5zP/ZE6xFMJeg/o8wx0gN5gJxgXCLW5n0OeS9yDYG/A0ETQd+hHgV8p8mbEfXHcCHqFACNoF6eCBf0F2rfh+yftIfAt9m1GvAHDI5lEKbN1GJzIJd6G4e5UxEz9duz25BJvLTNm7D0YCPplkmrmT+zNIfZYnALLIuPN9A+APsDjNLdBr737YHzJhM4xtgp023BxjqdgcBIMKwkg4Y8wvpD2Uvh+TjsJGOs4WFni62ZbDR4XukbieQxeLXEqhlbwcTZ0bJeDL2A06AQeuQdgYkWM2ehuqq9D/Ad7l3QIcGUU//xy+N5PazqqZA7KGzGx/YdgcsK5UB/mY1PozCoCVvi6zP9ixzkeg9KcpeQlBm4kN8wgYFWzhlfJWJQvCoOYeAKKp4kAX9FbFjuBeXWV9EuJNtb4LomJHzHmDq2SBSivBIODtMVyp4iNXeyNbsSey2sJ78a8FvZuutvgA7Cee+yaiXvhVvzH6xk4WuFk7t0cFv7BwDybV6/FHcEvdSSd7PWY2H5VATmNfk0gaMzrfMaK8+9EPpVM3gKir8vdJWW3kyXzDFhaEsDN8aphApo8ATOBm+4YWBv5+SqxmlWWzMKn7u1kBfsMTEEs2ZeEjl5lu0qC/M9QrWuxZQ8Bnz6eT/OtDAdLMn+38enjbebT53vsm/vYcwKvQc5jbyR2v1OTzCU2zjRwFxTP2y0h+D5an7cWEp+3Xo1JqUNssBmgP4gf9KbhI7iTZAwGdYlz4ybtWkb8F6eGdh8WNiwnAAAAAElFTkSuQmCC" alt="Promo Icon">
-        <span class="fw-light small text-white">Promo</span>
-      </a>
-      <a class="nav-link d-flex flex-column align-items-center" href="#contacto">
-        <img style="max-width: 26px;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAACv0lEQVRIS9WWW4hPQRzHd93KpcUDyeWNdl2KcokSS0SIknsSTyi3RBGlFClECHlQQu4ePBAPWkSuRe6XIrW1L0IetA8un2/9jmanmTnnv/7aTH2aM7/5/eY7c87M/E5lRQuVyhbSrSiH8Hwm3xY+wAP4XmQx5RC+gdAYE/tp4nuoz6QmkBLeQOA2OALLE4O4wq7bHRrT4VMoNiTcDscTMNsJ2MLz1oh4e+x9YYjFTKVuZb5vqcdBvR/rC3fE4TqMCIho1YcLfD9NYj9MNt9X1KPgixvrC8tBryhW5tBxzutcTLs3XIQX1qdxd8Faa1+inpESHk3nrYTwD/qmwDXHp47nsda+Sr0JHln7AvVMex5O/TCL81c8iI6nCWF1NcJQeG5+rrBMv2Ak3Ide8B503E7CwphwFzo+5wirexXoO6poc/WHFbDEbFrxMHs+Rr0ItLu72cSCF8hHOvskxB/Tp3P7LeCzF9tqsw+k1jdfYKuVWTv/iR5Cx+kU9nkRYX2jidBkhzq+Wnm2wbTK41ADL81HR/R8TNidoat/z0RDK8389NqvWOMg9VnoAJfNdiAlXEVnA2gQt1TTeBN5EyWbY1emLoql3mjraO8uWSESEBMegL+OVXb1Kfwr6HvpbYRKd4zLoA5u5k0wlSSUYdZ4AzyjXQv+xd8V223Q5tIlo/N6OiWeEu5E4Gvo6Q0g2zR4Z3bd71pldm4zd30qZbZgycvHg4nS3a2d6Rbl3aOwHQ7BpMj4G7HvCPXlCStGq9MlX8Q3pKEjtNLvKDrYXAKVo9vEXl2OXZlqvetTVFgxurGUEjs3Q1wnQnngTylFWEE9YB+4fydF5rEZJ/1GNVs4C1Te3glKf3lFOXmW71Tqiv34fhgmgH4OxoO/++9iqwXl8Cblb4XdwVrT0H2uGywrysvBpFJO4bxX/s9W/H8I/wbae3AftPmoIgAAAABJRU5ErkJggg==" alt="Contact Icon">
-        <span class="fw-light small text-white">Contacto</span>
-      </a>
-</nav>
-<script>
-  function getLuminance(color) {
-    const match = color.match(/^rgb\((\d+),\s*(\d+),\s*(\d+)\)$/);
-    if (match) {
-      const r = parseInt(match[1], 10);
-      const g = parseInt(match[2], 10);
-      const b = parseInt(match[3], 10);
-      return 0.2126 * r + 0.7152 * g + 0.0722 * b;
-    }
-    return 255;
-  }
-
-  function adjustNavbarColors() {
-    const navbar = document.querySelector('.nav-custom');
-    if (!navbar) return;
-
-    const bgColor = window.getComputedStyle(navbar).backgroundColor;
-    const luminance = getLuminance(bgColor);
-    const isDark = luminance < 128;
-
-    document.querySelectorAll('.nav-link').forEach(link => {
-      const span = link.querySelector('span');
-      if (span) {
-        span.style.color = isDark ? 'white' : 'black';
-      }
-
-      const img = link.querySelector('img');
-      if (img) {
-        img.style.filter = isDark ? 'invert(1)' : 'invert(0)';
-      }
-    });
-  }
-
-  document.addEventListener('DOMContentLoaded', adjustNavbarColors);
-  window.addEventListener('resize', adjustNavbarColors);
-</script>
-
-<!-- Sección Hero -->
-<section id="inicio" class="section-full-hero container-fluid">
-    <div class="container d-flex flex-column justify-content-center align-items-center text-center h-100">
-      <div class="text-center mb-0">
-        <img src="/img/logo-free.png" alt="Logo Pideme-la-luna" class="img-fluid logo-hero">
-      </div>
-      <h1 class="display-3 fw-bold text-white ml12">Bienvenido a PÍDEME-LA-LUNA</h1>
-      <p class="lead mt-4 px-4 py-2 rounded-pill bg-light bg-opacity-10 backdrop-blur" style="color: #f1df97;">
-        Experiencias que trascienden el sabor.
-      </p>    
-      <a href="https://wa.me/5213328658484?text=Buen%20día%2C%20me%20interesa%20conocer%20más%20sobre%20los%20servicios%2C%20catálogo%20y%20disponibilidad.%20¿Podrías%20compartirme%20más%20información%3F"
-        target="_blank"
-        class="btn btn-custom btn-lg mt-4 mb-5 shadow">
-        <i class="bx bxl-whatsapp me-2"></i> Mandar WhatsApp
-      </a>
-    </div>
-</section>
-<script>
-  var textWrapper = document.querySelector('.ml12');
-  textWrapper.innerHTML = textWrapper.textContent.replace(/\S/g, "<span class='letter'>$&</span>");
-
-  anime.timeline({loop: true})
-  .add({
-      targets: '.ml12 .letter',
-      translateX: [40,0],
-      translateZ: 0,
-      opacity: [0,1],
-      easing: "easeOutExpo",
-      duration: 1100,
-      delay: (el, i) => 500 + 30 * i
-  }).add({
-      targets: '.ml12 .letter',
-      translateX: [0,-30],
-      translateZ: 0,
-      opacity: [1,0],
-      easing: "easeInExpo",
-      duration: 1100,
-      delay: (el, i) => 100 + 30 * i
-  });       
-  ScrollReveal({reset: true}).reveal('.btn-1', {delay: 150}); 
-  ScrollReveal({reset: true}).reveal('.btn-2', {delay: 450}); 
-</script>
-
-
-<!-- sección mapas con animaciones -->
 <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
 <script>AOS.init();</script>
-<section id="ubicacion" class="section-full py-5 position-relative overflow-hidden" style="background-color: #1d1c38;">
+
+<nav class="navbar navbar-expand-lg rounded-5 shadow-sm px-4 py-2 position-absolute top-3 start-50 translate-middle-x mt-3 w-100"
+     style="backdrop-filter: blur(12px); background-color: rgba(20, 20, 20, 0.75); border: 1px solid rgba(255,255,255,0.1); z-index: 10; max-width: 95%;">
+  <div class="container-fluid">
+
+    <!-- Logo -->
+    <a class="navbar-brand text-white fw-bold" href="#">
+      <i class="bi bi-lightning-charge-fill me-1"></i> Pideme La Luna
+    </a>
+
+    <!-- Toggle button -->
+    <button class="navbar-toggler border-0 text-white" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar"
+            aria-controls="mainNavbar" aria-expanded="false" aria-label="Toggle navigation">
+      <i class="bi bi-list fs-2"></i>
+    </button>
+
+    <!-- Navbar links -->
+    <div class="collapse navbar-collapse justify-content-end" id="mainNavbar">
+      <ul class="navbar-nav align-items-center gap-lg-4 mt-3 mt-lg-0">
+
+        <li class="nav-item">
+          <a class="nav-link text-white-50 fw-semibold" href="#"
+             data-bs-toggle="collapse" data-bs-target=".navbar-collapse.show">Features</a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link text-white-50 fw-semibold" href="#"
+             data-bs-toggle="collapse" data-bs-target=".navbar-collapse.show">Pricing</a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link text-white-50 fw-semibold" href="#"
+             data-bs-toggle="collapse" data-bs-target=".navbar-collapse.show">Blog</a>
+        </li>
+
+        <li class="nav-item">
+          <a class="btn btn-outline-light btn-sm rounded-pill px-3 fw-semibold" href="#"
+             data-bs-toggle="collapse" data-bs-target=".navbar-collapse.show">Login</a>
+        </li>
+
+      </ul>
+    </div>
+
+  </div>
+</nav>
+
+<section class="d-flex flex-column justify-content-center align-items-center vh-100 position-relative overflow-hidden text-center"
+         style="background: linear-gradient(to bottom, #000000, #1d1c38); animation: fadeIn 1.5s ease-in-out;">
   
- <div class="position-absolute top-0 start-0 w-100 h-100 z-n1">
-    <svg id="visual" viewBox="0 0 900 600" preserveAspectRatio="none" class="w-100 h-100" xmlns="http://www.w3.org/2000/svg">
-      <rect x="0" y="0" width="900" height="600" fill="#1d1c38"></rect>
-      <path  d="M0 484L16.7 470.2C33.3 456.3 66.7 428.7 100 415C133.3 401.3 166.7 401.7 200 402.2C233.3 402.7 266.7 403.3 300 406C333.3 408.7 366.7 413.3 400 412.7C433.3 412 466.7 406 500 407.2C533.3 408.3 566.7 416.7 600 426.5C633.3 436.3 666.7 447.7 700 448.5C733.3 449.3 766.7 439.7 800 436.2C833.3 432.7 866.7 435.3 883.3 436.7L900 438L900 601L883.3 601C866.7 601 833.3 601 800 601C766.7 601 733.3 601 700 601C666.7 601 633.3 601 600 601C566.7 601 533.3 601 500 601C466.7 601 433.3 601 400 601C366.7 601 333.3 601 300 601C266.7 601 233.3 601 200 601C166.7 601 133.3 601 100 601C66.7 601 33.3 601 16.7 601L0 601Z" fill="#f1df97"></path>
-      <path id="wave-morph" d="M0 511L16.7 509.3C33.3 507.7 66.7 504.3 100 495.5C133.3 486.7 166.7 472.3 200 473C233.3 473.7 266.7 489.3 300 486.7C333.3 484 366.7 463 400 460.7C433.3 458.3 466.7 474.7 500 483.3C533.3 492 566.7 493 600 493.7C633.3 494.3 666.7 494.7 700 494.5C733.3 494.3 766.7 493.7 800 487.3C833.3 481 866.7 469 883.3 463L900 457L900 601L883.3 601C866.7 601 833.3 601 800 601C766.7 601 733.3 601 700 601C666.7 601 633.3 601 600 601C566.7 601 533.3 601 500 601C466.7 601 433.3 601 400 601C366.7 601 333.3 601 300 601C266.7 601 233.3 601 200 601C166.7 601 133.3 601 100 601C66.7 601 33.3 601 16.7 601L0 601Z" fill="#c8b076"></path>
-      <path id="wave-morph" d="M0 521L16.7 516.2C33.3 511.3 66.7 501.7 100 498.2C133.3 494.7 166.7 497.3 200 501.2C233.3 505 266.7 510 300 514C333.3 518 366.7 521 400 518.2C433.3 515.3 466.7 506.7 500 496.7C533.3 486.7 566.7 475.3 600 470.8C633.3 466.3 666.7 468.7 700 476.3C733.3 484 766.7 497 800 496.8C833.3 496.7 866.7 483.3 883.3 476.7L900 470L900 601L883.3 601C866.7 601 833.3 601 800 601C766.7 601 733.3 601 700 601C666.7 601 633.3 601 600 601C566.7 601 533.3 601 500 601C466.7 601 433.3 601 400 601C366.7 601 333.3 601 300 601C266.7 601 233.3 601 200 601C166.7 601 133.3 601 100 601C66.7 601 33.3 601 16.7 601L0 601Z" fill="#9e8458"></path>
-      <path id="wave-morph" d="M0 529L16.7 527.5C33.3 526 66.7 523 100 527.8C133.3 532.7 166.7 545.3 200 548.7C233.3 552 266.7 546 300 543.3C333.3 540.7 366.7 541.3 400 543.5C433.3 545.7 466.7 549.3 500 548.5C533.3 547.7 566.7 542.3 600 536C633.3 529.7 666.7 522.3 700 521.2C733.3 520 766.7 525 800 522.3C833.3 519.7 866.7 509.3 883.3 504.2L900 499L900 601L883.3 601C866.7 601 833.3 601 800 601C766.7 601 733.3 601 700 601C666.7 601 633.3 601 600 601C566.7 601 533.3 601 500 601C466.7 601 433.3 601 400 601C366.7 601 333.3 601 300 601C266.7 601 233.3 601 200 601C166.7 601 133.3 601 100 601C66.7 601 33.3 601 16.7 601L0 601Z" fill="#745b3b"></path>
-      <path  d="M0 576L16.7 573.5C33.3 571 66.7 566 100 566.7C133.3 567.3 166.7 573.7 200 571.3C233.3 569 266.7 558 300 555.8C333.3 553.7 366.7 560.3 400 562.3C433.3 564.3 466.7 561.7 500 564.3C533.3 567 566.7 575 600 571.2C633.3 567.3 666.7 551.7 700 547.7C733.3 543.7 766.7 551.3 800 556.5C833.3 561.7 866.7 564.3 883.3 565.7L900 567L900 601L883.3 601C866.7 601 833.3 601 800 601C766.7 601 733.3 601 700 601C666.7 601 633.3 601 600 601C566.7 601 533.3 601 500 601C466.7 601 433.3 601 400 601C366.7 601 333.3 601 300 601C266.7 601 233.3 601 200 601C166.7 601 133.3 601 100 601C66.7 601 33.3 601 16.7 601L0 601Z" fill="#4b3621"></path>
-    </svg>
-  </div>
+  <!-- Logo grande con sombra y presencia visual -->
+  <img src="/img/logo-free.png" 
+       alt="Pídeme La Luna Logo"
+       class="img-fluid logo-luna"
+       style="animation: zoomIn 1s ease-in-out; pointer-events: none; user-select: none;">
 
-  <div class="container position-relative">
-    <div class="row justify-content-center">
-      <div class="col-lg-6 text-center text-lg-start" data-aos="fade-right">
-        <h2 class="fw-bold ml12 beige"><box-icon name='map-pin' type='solid' color='#f1df97'></box-icon> Visita Nuestra Sucursal:</h2>
-        <p class="lead">San José #133, Santa Isabel, El Palomar, 45645, Jal.</p>
-        <p class="fw-bold fs-4 verde">Selecciona una sucursal para ver su ubicación:</p>
-
-        <!-- Horarios animados -->
-        <h5 class="fw-bold mt-4 ml12 beige"><box-icon name='time-five' color='#f1df97'></box-icon> Horarios:</h5>
-        <ul class="list-unstyled">
-          <li><box-icon name='calendar' color='#f1df97' class="icon-pulse"></box-icon> Lunes a Viernes: <span class="fw-bold" style="color: #f1df97;">8:00 AM - 1:30 PM</span></li>
-          <li><box-icon name='calendar-alt' color='#f1df97' class="icon-pulse"></box-icon> Sábado: <span class="fw-bold" style="color: #f1df97;">6:00 PM - 11:00 PM</span></li>
-          <li><box-icon name='calendar-event' color='#f1df97' class="icon-pulse"></box-icon> Domingo: <span class="fw-bold" style="color: #f1df97;">6:00 PM - 11:00 PM</span></li>
-        </ul>
-
-        <!-- Botón Google Maps -->
-        <div class="d-grid gap-2 mt-5">
-          <a href="https://maps.app.goo.gl/Z5rAw9SUtsxa5BUE9" target="_blank" class="btn btn-light btn-custom rounded-5 btn-lg">
-            <box-icon name='map' type='solid' color='#3c573e'></box-icon> Abrir Google Maps
-          </a>
-        </div>
-      </div>
-
-      <!-- Mapa con animación -->
-      <div class="col-lg-6 mt-2" data-aos="zoom-in" data-aos-delay="900">
-        <div class="map-container shadow-lg rounded-4 overflow-hidden border border-2">
-          <iframe id="branchMap"
-            width="100%" height="400px"
-            style="border:0; min-height: 300px;"
-            loading="lazy" allowfullscreen
-            referrerpolicy="no-referrer-when-downgrade"
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1511.7047437517215!2d-103.45636612701263!3d20.580860132371427!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8428ab3d16e5662b%3A0xc64406d0ee47f6cb!2sP%C3%ADdeme%20la%20luna!5e0!3m2!1ses-419!2smx!4v1748323055326!5m2!1ses-419!2smx">
-          </iframe>
-        </div>
-      </div>            
-    </div>
-  </div>
 </section>
-<style>
-  /* Pulse animation */
-  @keyframes pulse {
-    0%, 100% { transform: scale(1); opacity: 1; }
-    50% { transform: scale(1.15); opacity: 0.7; }
-  }
-  .icon-pulse {
-    animation: pulse 2.5s infinite ease-in-out;
-  }
 
-  /* Hover button effect */
-  .btn-custom:hover {
-    transform: scale(1.05);
-    box-shadow: 0 0 15px #f1df97;
-    transition: 0.3s ease;
-  }
-</style>
 
-<!-- seccion promo -->
-<section id="promo" class="section-full py-5" style="background: linear-gradient(to bottom, #4b3621, #3c573e);">
-  <div class="container">
-    <div class="row align-items-center">
-      <!-- Columna de Texto -->
-      <div class="col-md-6 mb-4 mb-md-0">
-        <p class="text-uppercase fw-bold mb-2 ml12 beige" style="font-size: 2.5rem; letter-spacing: .1rem;">
-          <box-icon name='star' type='solid' color='#f1df97'></box-icon> Servicios Especiales
-        </p>
-        <h2 class="fw-bold display-3 text-white">
-          <box-icon name='discount' type='solid' color='#f1df97'></box-icon> Haz de tu evento algo inolvidable.
-        </h2>
-        <p class="lead beige" style="font-size: 1.25rem;">
-          Conoce los servicios exclusivos como: 
-          <span id="randomWord" class="text-danger text-change fw-bold">servicio de eventos privados</span> y más.
-        </p>
-      </div>
+<section class="position-relative text-white d-flex align-items-center justify-content-center vh-100 overflow-hidden px-3"
+         style="background: linear-gradient(to top, #000000, #1d1c38);">
 
-      <!-- Columna de Botones -->
-      <div class="col-md-6 d-flex flex-column align-items-start">
-        <a href="docs/catalogo-pideme-la-luna.pdf" target="_blank"
-           class="btn btn-info mb-2 w-100 btn-lg shadow rounded-5 d-flex align-items-center justify-content-center">
-          <box-icon name='cart' type='solid' color='#fff'></box-icon> <span class="ms-2">Nuestra Historia, Tu Experiencia</span>
-        </a>
-        <a href="tel:+5213328658484" 
-           class="btn btn-success w-100 btn-lg shadow rounded-5 d-flex align-items-center justify-content-center">
-          <box-icon name='whatsapp' type='logo' color='#28a745'></box-icon> <span class="ms-2">Cotizar Servicio</span>
-        </a>
-      </div>      
-    </div>
+  <!-- Fondo con gradiente + parallax -->
+  <div class="position-absolute top-0 start-0 w-100 h-100 parallax-bg" style="z-index: 0;">
+    <img src="https://nextuipro.nyc3.cdn.digitaloceanspaces.com/components-images/backgrounds/bg-gradient.png"
+         alt="Fondo con gradiente"
+         class="w-100 h-100 object-fit-cover opacity-25"
+         style="object-fit: cover; pointer-events: none; user-select: none;">
   </div>
-</section>
-<script>
-  document.addEventListener('DOMContentLoaded', function () {
-    const words = ["barra de café", "carrito de crepas", "barra de carajillos", "barra de tapioca"];
-    let index = 0;
-    const randomWord = document.getElementById("randomWord");
 
-    setInterval(() => {
-      randomWord.style.transition = "opacity 0.5s";
-      randomWord.style.opacity = 0;
-      setTimeout(() => {
-        randomWord.textContent = words[index];
-        randomWord.style.opacity = 1;
-        index = (index + 1) % words.length;
-      }, 500);
-    }, 2000);
-  });
-</script>
+  <!-- Contenido central -->
+  <div class="text-center position-relative z-1" data-aos="fade-up" data-aos-duration="1200">
 
-<!-- Sección Contacto -->
-<section id="contacto" class="section-full py-5" style="background: linear-gradient(to bottom, #3c573e, #000);">
-  <div class="container">
-    <div class="row align-items-center">
-      <div class="col-12 text-center mb-5">
-        <p class="text-uppercase fw-bold mb-2 ml12" style="font-size: 2.5rem; letter-spacing: .1rem; color: #f1df97;">
-          <box-icon name='phone-call' type='solid' color='#f1df97'></box-icon> Contacto
-        </p>
-        <h2 class="fw-bold display-3 text-white">¿Necesitas Ayuda?</h2>
-        <p class="lead" style="font-size: 1.25rem; color: #f1df97;">
-          Llámanos o visítanos en cualquiera de nuestras sucursales.
-        </p>
-      </div>
+    <button class="btn btn-outline-light btn-sm rounded-pill mb-4 px-4 py-2 fw-normal" data-aos="fade-up" data-aos-delay="100">
+      Nueva experiencia de café <i class="bi bi-arrow-right ms-2"></i>
+    </button>
 
-      <!-- Tarjetas de sucursales -->
-      <div class="col-12 d-flex justify-content-center flex-wrap gap-4">
-        <div class="card shadow-lg rounded-5 p-5 text-center" style="width: 300px; cursor: pointer; transition: transform 0.3s ease-in-out; background-image: url('img/blue.jpg'); background-size: cover; background-position: center;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
-          <div class="d-flex flex-column align-items-center mb-3">
-            <box-icon name='home' type='solid' color='#fff' style="font-size: 1rem;"></box-icon>
-            <h4 class="fw-bold mt-2 text-white">Palomar</h4>
-          </div>
-          <p class="text-white">San José #133, Santa Isabel, El Palomar, 45645 Palomar, Jal.</p>
-          <button class="btn btn-success rounded-5 mt-2" data-bs-toggle="collapse" data-bs-target="#infoSucursal4">
-            <div class="d-flex align-items-center justify-content-center">
-              <box-icon name='info-circle' type='solid' color='#fff' style="font-size: 1rem;"></box-icon>
-              <span class="ms-2" style="font-size: 1rem;">Más Información</span>
-            </div>
-          </button>
-          <div class="collapse mt-3" id="infoSucursal4">
-            <p class="text-primary">Teléfono: <span class="fw-bold">33 3663 2537</span></p>
-            <a href="tel:+523328658484" class="btn btn-outline-success rounded-5 w-100">
-              <div class="d-flex align-items-center justify-content-center">
-                <box-icon name='phone' type='solid' color='#28a745' style="font-size: 1rem;"></box-icon>
-                <span class="ms-2" style="font-size: 1rem;">Llamar</span>
-              </div>
-            </a>            
-          </div>
-        </div>
-      </div>
+    <h1 class="fw-bold display-4 display-md-3 lh-sm mb-4"
+        data-aos="fade-up" data-aos-delay="200"
+        style="background: linear-gradient(91deg, #fff 32%, rgba(255,255,255,0.5) 99%);
+               -webkit-background-clip: text;
+               -webkit-text-fill-color: transparent;
+               text-shadow: 0 0 10px rgba(255,255,255,0.15);">
+      La forma más elegante<br>de disfrutar el café.
+    </h1>
+
+    <p class="text-white-50 fs-5 mx-auto mb-4" style="max-width: 600px;" data-aos="fade-up" data-aos-delay="300">
+      En <strong>Pídeme La Luna</strong>, cada taza es una obra de arte. Cafés de especialidad, ambiente íntimo y experiencias únicas que despiertan los sentidos.
+    </p>
+
+    <div class="d-flex flex-column flex-sm-row justify-content-center gap-3 mt-3" data-aos="fade-up" data-aos-delay="400">
+      <a href="#" class="btn btn-light text-dark fw-semibold rounded-pill px-4 py-2">Ver Menú</a>
+      <a href="#" class="btn btn-outline-light fw-normal rounded-pill px-4 py-2">
+        Reservar mesa <i class="bi bi-arrow-right ms-2"></i>
+      </a>
     </div>
+
   </div>
 </section>
 
+
+
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
 <!-- Código protegido. Queda estrictamente prohibido copiar o distribuir sin autorización legal. -->
 <!-- footer -->
 <footer class="text-white py-5 p-5" style="background: linear-gradient(to bottom, #000, #000);">
@@ -372,75 +211,4 @@
     </div>
   </div>
 </footer>
-
-<!-- Script para el efecto de luz solo en el primer section -->
-<script>
-document.addEventListener("mousemove", function(event) {
-    const effect = document.querySelector(".mouse-effect");
-
-    // Detecta si el cursor está sobre la sección que deseas excluir
-    const excludedSection = document.querySelector(".second-section");
-    const rect = excludedSection.getBoundingClientRect();
-    const mouseX = event.clientX;
-    const mouseY = event.clientY;
-
-    const isInExcludedSection = (
-        mouseX >= rect.left &&
-        mouseX <= rect.right &&
-        mouseY >= rect.top &&
-        mouseY <= rect.bottom
-    );
-
-    if (!isInExcludedSection) {
-        effect.style.background = `radial-gradient(600px at ${mouseX}px ${mouseY}px, rgba(216, 29, 78, 0.1), rgba(216, 29, 78, 0.02), transparent 99%)`;
-    } else {
-        effect.style.background = "none";
-    }
-});
-</script>
-
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-
-<script>
-  document.addEventListener('contextmenu', e => e.preventDefault());
-  document.onkeydown = function(e) {
-    if (e.key === "F12" || 
-        (e.ctrlKey && e.shiftKey && (e.key === "I" || e.key === "C" || e.key === "J")) || 
-        (e.ctrlKey && e.key === "U")) {
-      return false;
-    }
-  };
-</script>
-
-<script>
-  const wave1 = "M0 511L16.7 509.3C33.3 507.7 66.7 504.3 100 495.5C133.3 486.7 166.7 472.3 200 473C233.3 473.7 266.7 489.3 300 486.7C333.3 484 366.7 463 400 460.7C433.3 458.3 466.7 474.7 500 483.3C533.3 492 566.7 493 600 493.7C633.3 494.3 666.7 494.7 700 494.5C733.3 494.3 766.7 493.7 800 487.3C833.3 481 866.7 469 883.3 463L900 457L900 601L883.3 601C866.7 601 833.3 601 800 601C766.7 601 733.3 601 700 601C666.7 601 633.3 601 600 601C566.7 601 533.3 601 500 601C466.7 601 433.3 601 400 601C366.7 601 333.3 601 300 601C266.7 601 233.3 601 200 601C166.7 601 133.3 601 100 601C66.7 601 33.3 601 16.7 601L0 601Z";
-  
-  const wave2 = "M0 521L16.7 516.2C33.3 511.3 66.7 501.7 100 498.2C133.3 494.7 166.7 497.3 200 501.2C233.3 505 266.7 510 300 514C333.3 518 366.7 521 400 518.2C433.3 515.3 466.7 506.7 500 496.7C533.3 486.7 566.7 475.3 600 470.8C633.3 466.3 666.7 468.7 700 476.3C733.3 484 766.7 497 800 496.8C833.3 496.7 866.7 483.3 883.3 476.7L900 470L900 601L883.3 601C866.7 601 833.3 601 800 601C766.7 601 733.3 601 700 601C666.7 601 633.3 601 600 601C566.7 601 533.3 601 500 601C466.7 601 433.3 601 400 601C366.7 601 333.3 601 300 601C266.7 601 233.3 601 200 601C166.7 601 133.3 601 100 601C66.7 601 33.3 601 16.7 601L0 601Z";
-  
-  const wave3 = "M0 529L16.7 527.5C33.3 526 66.7 523 100 527.8C133.3 532.7 166.7 545.3 200 548.7C233.3 552 266.7 546 300 543.3C333.3 540.7 366.7 541.3 400 543.5C433.3 545.7 466.7 549.3 500 548.5C533.3 547.7 566.7 542.3 600 536C633.3 529.7 666.7 522.3 700 521.2C733.3 520 766.7 525 800 522.3C833.3 519.7 866.7 509.3 883.3 504.2L900 499L900 601L883.3 601C866.7 601 833.3 601 800 601C766.7 601 733.3 601 700 601C666.7 601 633.3 601 600 601C566.7 601 533.3 601 500 601C466.7 601 433.3 601 400 601C366.7 601 333.3 601 300 601C266.7 601 233.3 601 200 601C166.7 601 133.3 601 100 601C66.7 601 33.3 601 16.7 601L0 601Z";
-
-  const paths = [wave1, wave2, wave3, wave2, wave1];
-  let current = 0;
-
-  function animateWave() {
-    anime({
-      targets: "#wave-morph",
-      d: [{ value: paths[(current + 1) % paths.length] }],
-      easing: "easeInOutQuad",
-      duration: 2500,
-      direction: "alternate",
-      loop: true,
-      complete: () => {
-        current = (current + 1) % paths.length;
-        setTimeout(animateWave, 800);
-      }
-    });
-  }
-
-  animateWave();
-</script>
-
-
-</body>
-<!-- Código protegido. Queda estrictamente prohibido copiar o distribuir sin autorización legal. -->
 </html>
