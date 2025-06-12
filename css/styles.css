@@ -109,3 +109,91 @@ body {
   background: linear-gradient(to left, rgba(0,0,0,1), rgba(0,0,0,0));
 
 }
+
+.accordion-button::after {
+  content: "+";
+  font-size: 1.5rem;
+  background-image: none !important;
+  transform: none !important;
+}
+
+.accordion-button:not(.collapsed)::after {
+  content: "-";
+}
+
+.promo-card {
+  background: linear-gradient(135deg, #222, #1a1a1a);
+  color: #ddd;
+  padding: 2.2rem;
+  border-radius: 1.25rem;
+  width: 100%;
+  font-family: 'Segoe UI', sans-serif;
+  box-shadow: 0 0 25px rgba(255, 255, 255, 0.05);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border: 1px solid rgba(255,255,255,0.05);
+}
+
+.promo-card:hover {
+  transform: scale(1.02);
+  box-shadow: 0 0 35px 5px rgba(29, 28, 56, 0.85);
+  backdrop-filter: blur(2px);
+}
+
+.promo-header {
+  position: relative;
+}
+
+.promo-subtitle {
+  font-size: 0.9rem;
+  color: #aaa;
+  margin-bottom: 0.3rem;
+  letter-spacing: 1px;
+}
+
+.promo-title {
+  font-size: 2.4rem;
+  font-weight: 700;
+  color: #f3f3f3;
+  margin: 0;
+  line-height: 1.2;
+}
+
+.promo-btn {
+  position: absolute;
+  top: 0;
+  right: 0;
+  background-color: #25D366;
+  color: white;
+  border: none;
+  padding: 0.45rem 1rem;
+  border-radius: 1rem;
+  font-size: 0.85rem;
+  font-weight: 500;
+  transition: background 0.3s ease;
+  text-decoration: none;
+}
+
+.promo-btn:hover {
+  background-color: #1ebe58;
+  color: #fff;
+}
+
+.promo-footer {
+  margin-top: 2rem;
+  border-top: 1px solid #333;
+  padding-top: 1.25rem;
+}
+
+.promo-checklist {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.promo-checklist li {
+  margin-bottom: 0.75rem;
+  font-size: 0.95rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
