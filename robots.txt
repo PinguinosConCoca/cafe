@@ -1,0 +1,13 @@
+# robots.txt para https://pidemelaluna.com/
+# Última actualización: 2025-06-17
+
+User-agent: *
+Allow: /
+
+# Bloquear carpetas sensibles (ajusta si cambias estructura)
+Disallow: /admin/
+Disallow: /cgi-bin/
+Disallow: /tmp/
+
+# Incluir el sitemap oficial
+Sitemap: https://pidemelaluna.com/sitemap.xml
