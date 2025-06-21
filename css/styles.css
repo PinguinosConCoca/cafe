@@ -211,3 +211,9 @@ body {
   align-items: center;
   gap: 0.5rem;
 }
+
+.img-uniforme {
+    height: 250px;
+    object-fit: cover;
+    object-position: center;
+}
