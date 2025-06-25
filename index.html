@@ -145,6 +145,25 @@
   </div>
 </nav>
 
+<section class="position-relative vh-100 overflow-hidden d-flex justify-content-center align-items-center text-center">
+  <!-- Video de fondo -->
+  <video autoplay muted loop playsinline class="position-absolute w-100 h-100 object-fit-cover" style="z-index: 0;">
+    <source src="/video/video-2.mp4" type="video/mp4">
+    Tu navegador no soporta videos HTML5.
+  </video>
+  <!-- Degradado hacia negro (50% de altura) -->
+  <div class="position-absolute bottom-0 start-0 w-100" 
+       style="height: 50%; z-index: 1; background: linear-gradient(to bottom, rgba(0,0,0,0) 0%, #000 100%); pointer-events: none;">
+  </div>
+  <!-- Logo encima del video -->
+  <div class="position-relative z-2">
+    <img src="/img/logo-free.png" 
+         alt="Pídeme La Luna Logo"
+         class="img-fluid logo-luna"
+         style="animation: zoomIn 1s ease-in-out; pointer-events: none; user-select: none;">
+  </div>
+</section>
+
 <section class="d-flex flex-column justify-content-center align-items-center vh-100 position-relative overflow-hidden text-center"
          style="background: linear-gradient(to bottom, #000000, #1d1c38); animation: fadeIn 1.5s ease-in-out;">
 
