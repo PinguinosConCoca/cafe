@@ -257,8 +257,14 @@
   function playWelcome(btnId) {
     const audio = document.getElementById("welcome-audio");
     const btn = document.getElementById(btnId);
-    audio.play();
-    btn.classList.add("d-none");
+
+    if (audio.paused) {
+      audio.play();
+      btn.innerHTML = '<i class="bi bi-pause-circle-fill me-2"></i> Click Para Pausar...';
+    } else {
+      audio.pause();
+      btn.innerHTML = '<i class="bi bi-play-circle-fill me-2"></i> Reproducir Música';
+    }
   }
 </script>
 
@@ -270,7 +276,7 @@
       <div class="col-md-6">
         <div class="card shadow-lg rounded-5 border-dark overflow-hidden w-100 h-100 position-relative" style="aspect-ratio: 16/9;">
           <video autoplay muted loop playsinline class="w-100 h-100 object-fit-cover">
-            <source src="/video/video-2.mp4" type="video/mp4">
+            <source src="/video/video-10.mp4" type="video/mp4">
             Tu navegador no soporta videos HTML5.
           </video>
 
@@ -311,8 +317,8 @@
     </div>
   </div>
 </section>
-
 <!-- / audio -->
+
 <section class="container py-5 mt-5 bg-black">
   <h1 class="fw-bold display-4 display-md-3 lh-sm mb-4"
       data-aos="fade-up" data-aos-delay="200"
@@ -387,7 +393,7 @@
             Jarabe artesanal sabor Caramelo, ideal para café, frappés o postres.
           </p>
           <div class="text-warning mb-2">
-            ★★★★☆ <span class="text-muted small">(13)</span>
+            ★★★★★ <span class="text-muted small">(13)</span>
           </div>
           <a href="https://wa.me/523328658484?text=Hola,%20quiero%20cotizar%20el%20producto:%20Jarabe%20100%%20Caramelo" class="btn btn-outline-success w-100 rounded-pill">Cotizar</a>
         </div>
@@ -406,6 +412,27 @@
           </div>
           <p class="card-text small beige">
             Jarabe artesanal sabor Avellana, ideal para café, frappés o postres.
+          </p>
+          <div class="text-warning mb-2">
+            ★★★★★ <span class="text-muted small">(13)</span>
+          </div>
+          <a href="https://wa.me/523328658484?text=Hola,%20quiero%20cotizar%20el%20producto:%20Jarabe%20100%%20Avellana" class="btn btn-outline-success w-100 rounded-pill">Cotizar</a>
+        </div>
+      </div>
+
+      <div class="card bg-dark text-white rounded-4" style="min-width: 300px; max-width: 200px;">
+        <div class="p-3">
+          <div class="card-img-wrapper rounded-3 overflow-hidden" style="height: 220px;">
+            <img src="/img/productos/prod5.jpeg" class="w-100 h-100" alt="Jarabe Avellana" style="object-fit: cover;">
+          </div>
+        </div>
+        <div class="card-body">
+          <div class="d-flex justify-content-between align-items-center mb-2">
+            <h5 class="card-title m-0">Base para Frappe Vainilla</h5>
+            <span class="fw-bold">$449.00</span>
+          </div>
+          <p class="card-text small beige">
+            Base cremosa sabor vainilla, ideal para frappés y bebidas frías.
           </p>
           <div class="text-warning mb-2">
             ★★★★★ <span class="text-muted small">(13)</span>
@@ -866,7 +893,7 @@
       <div class="col-md-3 mb-4 mt-5">
         <h5 class="ml12 fw-bold mb-3 beige">Síguenos</h5>
         <div class="d-flex gap-3">
-          <a href="#" class="text-white"><i class="bx bxl-facebook-circle fs-3"></i></a>
+          <a href="https://www.facebook.com/pideme.la.lunaa/" class="text-white"><i class="bx bxl-facebook-circle fs-3"></i></a>
           <a href="https://www.instagram.com/pideme.la.luna_/" class="text-white"><i class="bx bxl-instagram fs-3"></i></a>
           <a href="https://wa.me/5213328658484" class="text-white"><i class="bx bxl-whatsapp fs-3"></i></a>
         </div>
