@@ -252,41 +252,66 @@
   <source src="/audio/Experience - Trio M (cover Ludovico Einaudi).mp3" type="audio/mp3">
   Tu navegador no soporta audio HTML5.
 </audio>
-<script>
-  function playWelcome() {
-    const audio = document.getElementById("welcome-audio");
-    const btn = document.getElementById("welcome-btn");
 
+<script>
+  function playWelcome(btnId) {
+    const audio = document.getElementById("welcome-audio");
+    const btn = document.getElementById(btnId);
     audio.play();
-    btn.classList.add("d-none"); // Oculta el botón
+    btn.classList.add("d-none");
   }
 </script>
-<section class="p-3 position-relative vh-100 d-flex justify-content-center align-items-center text-center bg-black">
 
-  <!-- Card con video -->
-  <div class="card shadow-lg rounded-5 border-dark overflow-hidden w-100 h-100 m-3 position-relative" style="z-index: 1;">
+<section class="p-3 position-relative min-vh-100 d-flex align-items-center text-center bg-black">
+  <div class="container">
+    <div class="row g-4">
 
-    <!-- Video fondo -->
-    <video autoplay muted loop playsinline class="w-100 h-100 object-fit-cover">
-      <source src="/video/video-2.mp4" type="video/mp4">
-      Tu navegador no soporta videos HTML5.
-    </video>
+      <!-- Primera tarjeta con video -->
+      <div class="col-md-6">
+        <div class="card shadow-lg rounded-5 border-dark overflow-hidden w-100 h-100 position-relative" style="aspect-ratio: 16/9;">
+          <video autoplay muted loop playsinline class="w-100 h-100 object-fit-cover">
+            <source src="/video/video-2.mp4" type="video/mp4">
+            Tu navegador no soporta videos HTML5.
+          </video>
 
-    <!-- Degradado inferior -->
-    <div class="position-absolute bottom-0 start-0 w-100"
-         style="height: 50%; background: linear-gradient(to bottom, rgba(0,0,0,0) 0%, #000 100%); pointer-events: none;">
+          <div class="position-absolute bottom-0 start-0 w-100"
+               style="height: 50%; background: linear-gradient(to bottom, rgba(0,0,0,0) 0%, #000 100%); pointer-events: none;">
+          </div>
+
+          <div class="position-absolute top-50 start-50 translate-middle z-2">
+            <button id="welcome-btn-1" onclick="playWelcome('welcome-btn-1')" class="btn btn-outline-light btn-lg rounded-pill px-4 py-2 shadow">
+              <i class="bi bi-play-circle-fill me-2"></i>
+              Bienvenido a Pídeme La Luna
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Segunda tarjeta con video -->
+      <div class="col-md-6">
+        <div class="card shadow-lg rounded-5 border-dark overflow-hidden w-100 h-100 position-relative" style="aspect-ratio: 16/9;">
+          <video autoplay muted loop playsinline class="w-100 h-100 object-fit-cover">
+            <source src="/video/video-9.mp4" type="video/mp4">
+            Tu navegador no soporta videos HTML5.
+          </video>
+
+          <div class="position-absolute bottom-0 start-0 w-100"
+               style="height: 50%; background: linear-gradient(to bottom, rgba(0,0,0,0) 0%, #000 100%); pointer-events: none;">
+          </div>
+
+          <div class="position-absolute top-50 start-50 translate-middle z-2">
+            <button id="welcome-btn-2" onclick="playWelcome('welcome-btn-2')" class="btn btn-outline-light btn-lg rounded-pill px-4 py-2 shadow">
+              <i class="bi bi-music-note-beamed me-2"></i>
+              Vive la experiencia
+            </button>
+          </div>
+        </div>
+      </div>
+
     </div>
-
-    <!-- Botón centrado -->
-    <div class="position-absolute top-50 start-50 translate-middle z-2">
-      <button id="welcome-btn" onclick="playWelcome()" class="btn btn-outline-light btn-lg rounded-pill px-4 py-2 shadow">
-        <i class="bi bi-play-circle-fill me-2"></i>
-        Bienvenido a Pídeme La Luna
-      </button>
-    </div>
-
   </div>
 </section>
+
 <!-- / audio -->
 <section class="container py-5 mt-5 bg-black">
   <h1 class="fw-bold display-4 display-md-3 lh-sm mb-4"
