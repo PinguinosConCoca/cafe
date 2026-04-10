@@ -1,28 +1,34 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Galería - Pídeme La Luna</title>
+  <script>document.documentElement.classList.add('is-loading');</script>
 
   <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=AW-17463763087">
   </script>
   <script>
     window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
+    function gtag() { dataLayer.push(arguments); }
     gtag('js', new Date());
-  
+
     gtag('config', 'AW-17463763087');
   </script>
 
   <!-- Bootstrap + Iconos -->
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+  <link rel="preconnect" href="https://www.googletagmanager.com" crossorigin>
+  <link rel="preconnect" href="https://unpkg.com" crossorigin>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css" rel="stylesheet">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
-  
+  <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+
   <!-- Animaciones AOS -->
   <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
-  
+
   <!-- Tu CSS personalizado -->
   <link rel="stylesheet" href="/css/styles.css">
 
@@ -30,6 +36,11 @@
     body {
       background-color: #000;
       color: white;
+    }
+
+    #galeria {
+      content-visibility: auto;
+      contain-intrinsic-size: 1000px;
     }
 
     .galeria-img-wrapper {
@@ -51,192 +62,415 @@
     .galeria-img-wrapper:hover img {
       transform: scale(1.05);
     }
+
+    .page-loader {
+      position: fixed;
+      inset: 0;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      background: rgba(0, 0, 0, 0.92);
+      z-index: 9999;
+    }
+
+    html.is-loading,
+    html.is-loading body {
+      overflow: hidden;
+    }
+
+    html.is-loading .page-loader {
+      display: flex;
+      opacity: 1;
+      visibility: visible;
+    }
+
+    html.is-loaded .page-loader {
+      display: flex;
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+      transition: opacity 240ms ease, visibility 0s linear 240ms;
+    }
+
+    .page-loader__spinner {
+      width: 52px;
+      height: 52px;
+      border-radius: 999px;
+      border: 3px solid rgba(255, 255, 255, 0.18);
+      border-top-color: rgba(255, 193, 7, 0.95);
+      animation: pageLoaderSpin 900ms linear infinite;
+      filter: drop-shadow(0 0 12px rgba(255, 193, 7, 0.15));
+    }
+
+    .page-loader__inner {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .page-loader__text {
+      color: rgba(255, 255, 255, 0.55);
+      font-size: 0.875rem;
+    }
+
+    @keyframes pageLoaderSpin {
+      to {
+        transform: rotate(360deg);
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .page-loader__spinner {
+        animation: none;
+      }
+
+      html.is-loaded .page-loader {
+        transition: none;
+      }
+    }
   </style>
 </head>
+
 <body>
-
-<nav class="navbar navbar-expand-lg rounded-5 shadow-sm px-4 py-2 position-absolute top-3 start-50 translate-middle-x mt-3 w-100"
-     style="backdrop-filter: blur(12px); background-color: rgba(20, 20, 20, 0.75); border: 1px solid rgba(255,255,255,0.1); z-index: 10; max-width: 95%;">
-  <div class="container-fluid">
-
-    <!-- Logo -->
-    <a class="navbar-brand text-white fw-bold" href="#">
-      <i class="bi bi-moon-stars-fill me-1 text-warning"></i> Pídeme La Luna
-    </a>
-
-    <!-- Toggle button -->
-    <button class="navbar-toggler border-0 text-white" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar"
-            aria-controls="mainNavbar" aria-expanded="false" aria-label="Toggle navigation">
-      <i class="bi bi-list fs-2"></i>
-    </button>
-
-    <!-- Navbar links -->
-    <div class="collapse navbar-collapse justify-content-end" id="mainNavbar">
-      <ul class="navbar-nav align-items-center gap-lg-4 mt-3 mt-lg-0">
-
-        <li class="nav-item">
-          <a class="nav-link text-white-50 fw-semibold" href="/index.html#inicio">Menú</a>
-        </li>
-
-        <li class="nav-item">
-          <a class="nav-link text-white-50 fw-semibold" href="/index.html#contacto">Contacto</a>
-        </li>
-
-        <li class="nav-item">
-          <a class="nav-link text-white-50 fw-semibold" href="/index.html#precios">Precios</a>
-        </li>
-
-        <li class="nav-item">
-          <a class="nav-link text-white-50 fw-semibold" href="/galeria.html">Galería</a>
-        </li>
-
-        <li class="nav-item">
-          <a class="btn btn-outline-warning btn-sm rounded-pill px-3 fw-semibold" href="#nosotros">Sobre Nosotros</a>
-        </li>
-
-      </ul>
+  <div class="page-loader" role="status" aria-live="polite" aria-label="Cargando">
+    <div class="page-loader__inner">
+      <div class="page-loader__spinner"></div>
+      <div class="page-loader__text">Cargando...</div>
+      <span class="visually-hidden">Cargando</span>
     </div>
-
   </div>
-</nav>
 
-<!-- Sección de Bienvenida -->
-<section class="d-flex justify-content-center align-items-center text-center vh-100 px-3"
-         style="background: linear-gradient(to top, #000, #1d1c38);">
-  <div data-aos="fade-up">
-    <h1 class="fw-bold display-2 mb-4"
-        style="background: linear-gradient(90deg, #fff 30%, rgba(255,255,255,0.4) 100%);
+  <nav
+    class="navbar navbar-expand-lg rounded-5 shadow-sm px-4 py-2 position-absolute top-3 start-50 translate-middle-x mt-3 w-100"
+    style="backdrop-filter: blur(12px); background-color: rgba(20, 20, 20, 0.75); border: 1px solid rgba(255,255,255,0.1); z-index: 10; max-width: 95%;">
+    <div class="container-fluid">
+
+      <!-- Logo -->
+      <a class="navbar-brand text-white fw-bold" href="#">
+        <i class="bi bi-moon-stars-fill me-1 text-warning"></i> Pídeme La Luna
+      </a>
+
+      <!-- Toggle button -->
+      <button class="navbar-toggler border-0 text-white" type="button" data-bs-toggle="collapse"
+        data-bs-target="#mainNavbar" aria-controls="mainNavbar" aria-expanded="false" aria-label="Toggle navigation">
+        <i class="bi bi-list fs-2"></i>
+      </button>
+
+      <!-- Navbar links -->
+      <div class="collapse navbar-collapse justify-content-end" id="mainNavbar">
+        <ul class="navbar-nav align-items-center gap-lg-4 mt-3 mt-lg-0">
+
+          <li class="nav-item">
+            <a class="nav-link text-white-50 fw-semibold" href="/index.html">Menú</a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link text-white-50 fw-semibold" href="/index.html#contacto">Contacto</a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link text-white-50 fw-semibold" href="/index.html#precios">Precios</a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link text-white-50 fw-semibold" href="/galeria.html">Galería</a>
+          </li>
+
+          <li class="nav-item">
+            <a class="btn btn-outline-warning btn-sm rounded-pill px-3 fw-semibold" href="#nosotros">Sobre Nosotros</a>
+          </li>
+
+        </ul>
+      </div>
+
+    </div>
+  </nav>
+
+  <!-- Sección de Bienvenida -->
+  <section class="d-flex justify-content-center align-items-center text-center vh-100 px-3"
+    style="background: linear-gradient(to top, #000, #1d1c38);">
+    <div data-aos="fade-up">
+      <h1 class="fw-bold display-2 mb-4" style="background: linear-gradient(90deg, #fff 30%, rgba(255,255,255,0.4) 100%);
                -webkit-background-clip: text;
                -webkit-text-fill-color: transparent;">
-      Bienvenido a la Galería
-    </h1>
-    <p class="text-white-50 fs-5 mx-auto" style="max-width: 600px;">
-      Aquí capturamos la esencia, el ambiente y la magia de cada experiencia vivida en <strong class="beige">Pídeme La Luna</strong>. 🌙
-    </p>
-    <a href="#galeria" class="btn btn-outline-light rounded-pill px-4 py-2 mt-4">
-      Explorar Galería <i class="bi bi-arrow-down ms-2"></i>
-    </a>
-  </div>
-</section>
+        Bienvenido a la Galería
+      </h1>
+      <p class="text-white-50 fs-5 mx-auto" style="max-width: 600px;">
+        Aquí capturamos la esencia, el ambiente y la magia de cada experiencia vivida en <strong class="beige">Pídeme La
+          Luna</strong>. 🌙
+      </p>
+      <a href="#galeria" class="btn btn-outline-light rounded-pill px-4 py-2 mt-4">
+        Explorar Galería <i class="bi bi-arrow-down ms-2"></i>
+      </a>
+    </div>
+  </section>
 
-<!-- Galería -->
-<section id="galeria" class="container py-5">
-  <h2 class="fw-bold display-3 text-center mb-5" data-aos="fade-up"
-      style="background: linear-gradient(90deg, #fff 30%, rgba(255,255,255,0.4) 100%);
+  <!-- Galería -->
+  <section id="galeria" class="container py-5">
+    <h2 class="fw-bold display-3 text-center mb-5" data-aos="fade-up" style="background: linear-gradient(90deg, #fff 30%, rgba(255,255,255,0.4) 100%);
              -webkit-background-clip: text;
              -webkit-text-fill-color: transparent;">
-    🌙 Nuestra Galería
-  </h2>
+      🌙 Nuestra Galería
+    </h2>
 
-  <div class="row g-4">
-    <!-- Imágenes -->
-    <div class="col-6 col-md-4 col-lg-3" data-aos="zoom-in" data-aos-delay="50">
-      <div class="galeria-img-wrapper">
-        <img src="/img/galeria/nosotros.jpeg" alt="Foto 1" class="img-fluid">
-      </div>
-    </div>
-    <div class="col-6 col-md-4 col-lg-3" data-aos="zoom-in" data-aos-delay="100">
-      <div class="galeria-img-wrapper">
-        <img src="/img/galeria/og.jpg" alt="Foto 2" class="img-fluid">
-      </div>
-    </div>
-    <div class="col-6 col-md-4 col-lg-3" data-aos="zoom-in" data-aos-delay="150">
-      <div class="galeria-img-wrapper">
-        <img src="/img/galeria/dos.jpg" alt="Foto 3" class="img-fluid">
-      </div>
-    </div>
-    <div class="col-6 col-md-4 col-lg-3" data-aos="zoom-in" data-aos-delay="200">
-      <div class="galeria-img-wrapper">
-        <img src="/img/galeria/tres.jpg" alt="Foto 4" class="img-fluid">
-      </div>
-    </div>
-    <div class="col-6 col-md-4 col-lg-3" data-aos="zoom-in" data-aos-delay="250">
-      <div class="galeria-img-wrapper">
-        <img src="/img/galeria/cuatro.jpg" alt="Foto 5" class="img-fluid">
-      </div>
-    </div>
-    <div class="col-6 col-md-4 col-lg-3" data-aos="zoom-in" data-aos-delay="300">
-      <div class="galeria-img-wrapper">
-        <img src="/img/galeria/cinco.jpg" alt="Foto 6" class="img-fluid">
-      </div>
-    </div>
-    <div class="col-6 col-md-4 col-lg-3" data-aos="zoom-in" data-aos-delay="350">
-      <div class="galeria-img-wrapper">
-        <img src="/img/galeria/seis.jpg" alt="Foto 7" class="img-fluid">
-      </div>
-    </div>
-    <div class="col-6 col-md-4 col-lg-3" data-aos="zoom-in" data-aos-delay="400">
-      <div class="galeria-img-wrapper">
-        <img src="/img/galeria/siete.jpg" alt="Foto 8" class="img-fluid">
-      </div>
-    </div>
-  </div>
-
-  <!-- Botón de regreso -->
-  <div class="text-center mt-5" data-aos="fade-up" data-aos-delay="500">
-    <a href="/" class="btn btn-outline-light rounded-pill px-4 py-2 fw-semibold">
-      <i class="bi bi-arrow-left-circle me-2"></i> Regresar al inicio
-    </a>
-  </div>
-</section>
-
-<!-- JS -->
-<script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js"></script>
-<script>AOS.init();</script>
-
-</body>
-<footer class="text-white py-5 p-5" style="background: linear-gradient(to bottom, #000, #000);">
-  <div class="container">
-    <div class="row">
-
-      <!-- Logo y descripción -->
-      <div class="col-md-4 mb-4 mt-5">
-        <img src="img/logo-free.png" alt="Reform" class="mb-3" style="max-width: 150px;">
-      </div>
-
-      <!-- Enlaces rápidos -->
-      <div class="col-md-2 mb-4 mt-5">
-        <h5 class="ml12 fw-bold mb-3 beige">Navegación</h5>
-        <ul class="list-unstyled">
-          <li><a href="/index.html#inicio" class="text-white text-decoration-none">Inicio</a></li>
-          <li><a href="/index.html#contacto" class="text-white text-decoration-none">Ubicación</a></li>
-          <li><a href="/index.html#precios" class="text-white text-decoration-none">Precios</a></li>
-          <li><a href="/index.html#nosotros" class="text-white text-decoration-none">Sobre Nosotros</a></li>
-        </ul>
-      </div>
-
-      <!-- Información de contacto -->
-      <div class="col-md-3 mb-4 mt-5">
-        <h5 class="ml12 fw-bold mb-3 beige">Contacto</h5>
-        <ul class="list-unstyled text-white small">
-          <li>📍 Guadalajara & Zapopan, Jalisco</li>
-          <li>📞 332 022 8476</li>
-          <li>✉️  pidemelalunagdl@gmail.com</li>
-          <li><a href="https://wa.me/5213320228476" target="_blank" class="text-decoration-none text-success fw-bold">Mandar Whatsapp</a></li>
-        </ul>
-      </div>
-
-      <!-- Redes sociales -->
-      <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
-      <div class="col-md-3 mb-4 mt-5">
-        <h5 class="ml12 fw-bold mb-3 beige">Síguenos</h5>
-        <div class="d-flex gap-3">
-          <a href="https://www.facebook.com/pideme.la.lunaa/" class="text-white"><i class="bx bxl-facebook-circle fs-3"></i></a>
-          <a href="https://www.instagram.com/pideme.la.luna_/" class="text-white"><i class="bx bxl-instagram fs-3"></i></a>
-          <a href="https://wa.me/5213320228476" class="text-white"><i class="bx bxl-whatsapp fs-3"></i></a>
+    <div class="row g-4">
+      <!-- Imágenes -->
+      <div class="col-6 col-md-4 col-lg-3" data-aos="zoom-in" data-aos-delay="50">
+        <div class="galeria-img-wrapper">
+          <img src="/img/galeria/nosotros.jpeg.jpg" alt="Foto 1" class="img-fluid" loading="lazy" decoding="async"
+            fetchpriority="low">
         </div>
       </div>
-
+      <div class="col-6 col-md-4 col-lg-3" data-aos="zoom-in" data-aos-delay="100">
+        <div class="galeria-img-wrapper">
+          <img src="/img/galeria/og.jpg" alt="Foto 2" class="img-fluid" loading="lazy" decoding="async"
+            fetchpriority="low">
+        </div>
+      </div>
+      <div class="col-6 col-md-4 col-lg-3" data-aos="zoom-in" data-aos-delay="150">
+        <div class="galeria-img-wrapper">
+          <img src="/img/galeria/dos.jpg" alt="Foto 3" class="img-fluid" loading="lazy" decoding="async"
+            fetchpriority="low">
+        </div>
+      </div>
+      <div class="col-6 col-md-4 col-lg-3" data-aos="zoom-in" data-aos-delay="200">
+        <div class="galeria-img-wrapper">
+          <img src="/img/galeria/tres.jpg" alt="Foto 4" class="img-fluid" loading="lazy" decoding="async"
+            fetchpriority="low">
+        </div>
+      </div>
+      <div class="col-6 col-md-4 col-lg-3" data-aos="zoom-in" data-aos-delay="250">
+        <div class="galeria-img-wrapper">
+          <img src="/img/galeria/cuatro.jpg" alt="Foto 5" class="img-fluid" loading="lazy" decoding="async"
+            fetchpriority="low">
+        </div>
+      </div>
+      <div class="col-6 col-md-4 col-lg-3" data-aos="zoom-in" data-aos-delay="300">
+        <div class="galeria-img-wrapper">
+          <img src="/img/galeria/cinco.jpg" alt="Foto 6" class="img-fluid" loading="lazy" decoding="async"
+            fetchpriority="low">
+        </div>
+      </div>
+      <div class="col-6 col-md-4 col-lg-3" data-aos="zoom-in" data-aos-delay="350">
+        <div class="galeria-img-wrapper">
+          <img src="/img/galeria/seis.jpg" alt="Foto 7" class="img-fluid" loading="lazy" decoding="async"
+            fetchpriority="low">
+        </div>
+      </div>
+      <div class="col-6 col-md-4 col-lg-3" data-aos="zoom-in" data-aos-delay="400">
+        <div class="galeria-img-wrapper">
+          <img src="/img/galeria/siete.jpg" alt="Foto 8" class="img-fluid" loading="lazy" decoding="async"
+            fetchpriority="low">
+        </div>
+      </div>
+      <div class="col-6 col-md-4 col-lg-3" data-aos="zoom-in" data-aos-delay="50">
+        <div class="galeria-img-wrapper">
+          <img src="/img/galeria/DSC_0051.jpg" alt="Foto 9" class="img-fluid" loading="lazy" decoding="async"
+            fetchpriority="low">
+        </div>
+      </div>
+      <div class="col-6 col-md-4 col-lg-3" data-aos="zoom-in" data-aos-delay="100">
+        <div class="galeria-img-wrapper">
+          <img src="/img/galeria/DSC_0064.jpg" alt="Foto 10" class="img-fluid" loading="lazy" decoding="async"
+            fetchpriority="low">
+        </div>
+      </div>
+      <div class="col-6 col-md-4 col-lg-3" data-aos="zoom-in" data-aos-delay="150">
+        <div class="galeria-img-wrapper">
+          <img src="/img/galeria/DSC_1294.jpg" alt="Foto 11" class="img-fluid" loading="lazy" decoding="async"
+            fetchpriority="low">
+        </div>
+      </div>
+      <div class="col-6 col-md-4 col-lg-3" data-aos="zoom-in" data-aos-delay="200">
+        <div class="galeria-img-wrapper">
+          <img src="/img/galeria/DSC_1416%20(1).jpg" alt="Foto 12" class="img-fluid" loading="lazy" decoding="async"
+            fetchpriority="low">
+        </div>
+      </div>
+      <div class="col-6 col-md-4 col-lg-3" data-aos="zoom-in" data-aos-delay="250">
+        <div class="galeria-img-wrapper">
+          <img src="/img/galeria/DSC_1467.jpg" alt="Foto 13" class="img-fluid" loading="lazy" decoding="async"
+            fetchpriority="low">
+        </div>
+      </div>
+      <div class="col-6 col-md-4 col-lg-3" data-aos="zoom-in" data-aos-delay="300">
+        <div class="galeria-img-wrapper">
+          <img src="/img/galeria/DSC_1484.jpg" alt="Foto 14" class="img-fluid" loading="lazy" decoding="async"
+            fetchpriority="low">
+        </div>
+      </div>
+      <div class="col-6 col-md-4 col-lg-3" data-aos="zoom-in" data-aos-delay="350">
+        <div class="galeria-img-wrapper">
+          <img src="/img/galeria/DSC_1494%20(1).jpg" alt="Foto 15" class="img-fluid" loading="lazy" decoding="async"
+            fetchpriority="low">
+        </div>
+      </div>
+      <div class="col-6 col-md-4 col-lg-3" data-aos="zoom-in" data-aos-delay="400">
+        <div class="galeria-img-wrapper">
+          <img src="/img/galeria/DSC_1524.jpg" alt="Foto 16" class="img-fluid" loading="lazy" decoding="async"
+            fetchpriority="low">
+        </div>
+      </div>
+      <div class="col-6 col-md-4 col-lg-3" data-aos="zoom-in" data-aos-delay="50">
+        <div class="galeria-img-wrapper">
+          <img src="/img/galeria/DSC_1527.jpg" alt="Foto 17" class="img-fluid" loading="lazy" decoding="async"
+            fetchpriority="low">
+        </div>
+      </div>
+      <div class="col-6 col-md-4 col-lg-3" data-aos="zoom-in" data-aos-delay="100">
+        <div class="galeria-img-wrapper">
+          <img src="/img/galeria/DSC_1541.jpg" alt="Foto 18" class="img-fluid" loading="lazy" decoding="async"
+            fetchpriority="low">
+        </div>
+      </div>
+      <div class="col-6 col-md-4 col-lg-3" data-aos="zoom-in" data-aos-delay="150">
+        <div class="galeria-img-wrapper">
+          <img src="/img/galeria/DSC_9944.jpg" alt="Foto 19" class="img-fluid" loading="lazy" decoding="async"
+            fetchpriority="low">
+        </div>
+      </div>
+      <div class="col-6 col-md-4 col-lg-3" data-aos="zoom-in" data-aos-delay="200">
+        <div class="galeria-img-wrapper">
+          <img src="/img/galeria/DSC_9952.jpg" alt="Foto 20" class="img-fluid" loading="lazy" decoding="async"
+            fetchpriority="low">
+        </div>
+      </div>
+      <div class="col-6 col-md-4 col-lg-3" data-aos="zoom-in" data-aos-delay="250">
+        <div class="galeria-img-wrapper">
+          <img src="/img/galeria/DSC_9956.jpg" alt="Foto 21" class="img-fluid" loading="lazy" decoding="async"
+            fetchpriority="low">
+        </div>
+      </div>
+      <div class="col-6 col-md-4 col-lg-3" data-aos="zoom-in" data-aos-delay="300">
+        <div class="galeria-img-wrapper">
+          <img src="/img/galeria/DSC_9962.jpg" alt="Foto 22" class="img-fluid" loading="lazy" decoding="async"
+            fetchpriority="low">
+        </div>
+      </div>
+      <div class="col-6 col-md-4 col-lg-3" data-aos="zoom-in" data-aos-delay="350">
+        <div class="galeria-img-wrapper">
+          <img src="/img/galeria/DSC_9973.jpg" alt="Foto 23" class="img-fluid" loading="lazy" decoding="async"
+            fetchpriority="low">
+        </div>
+      </div>
+      <div class="col-6 col-md-4 col-lg-3" data-aos="zoom-in" data-aos-delay="400">
+        <div class="galeria-img-wrapper">
+          <img src="/img/galeria/DSC_9995-Edit.jpg" alt="Foto 24" class="img-fluid" loading="lazy" decoding="async"
+            fetchpriority="low">
+        </div>
+      </div>
     </div>
 
-    <hr>
-
-    <!-- Derechos -->
-    <div class="text-center fw-bold text-white small mt-3">
-      © 2025 PÍDEME LA LUNA. Todos los derechos reservados.
+    <!-- Botón de regreso -->
+    <div class="text-center mt-5" data-aos="fade-up" data-aos-delay="500">
+      <a href="/" class="btn btn-outline-light rounded-pill px-4 py-2 fw-semibold">
+        <i class="bi bi-arrow-left-circle me-2"></i> Regresar al inicio
+      </a>
     </div>
-  </div>
-</footer>
+  </section>
+
+  <!-- JS -->
+  <script defer src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    (() => {
+      const html = document.documentElement;
+      const loader = document.querySelector('.page-loader');
+      let finished = false;
+
+      const finish = () => {
+        if (finished) return;
+        finished = true;
+        html.classList.remove('is-loading');
+        html.classList.add('is-loaded');
+        window.setTimeout(() => {
+          if (!loader) return;
+          if (loader.parentNode) loader.parentNode.removeChild(loader);
+        }, 320);
+      };
+
+      const scheduleFinish = () => {
+        const reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        if (window.AOS && !reduceMotion) {
+          try { AOS.init(); } catch (_) { }
+        }
+
+        const fontsReady = (document.fonts && document.fonts.ready)
+          ? document.fonts.ready.catch(() => { })
+          : Promise.resolve();
+
+        Promise.all([
+          fontsReady,
+          new Promise((resolve) => requestAnimationFrame(() => requestAnimationFrame(resolve)))
+        ])
+          .then(() => window.setTimeout(finish, 120))
+          .catch(finish);
+      };
+
+      window.addEventListener('DOMContentLoaded', scheduleFinish, { once: true });
+      window.addEventListener('load', finish, { once: true });
+      window.addEventListener('pageshow', finish, { once: true });
+      window.setTimeout(finish, 6000);
+    })();
+  </script>
+
+  <footer class="text-white py-5 p-5" style="background: linear-gradient(to bottom, #000, #000);">
+    <div class="container">
+      <div class="row">
+
+        <!-- Logo y descripción -->
+        <div class="col-md-4 mb-4 mt-5">
+          <img src="img/logo-free.png" alt="Reform" class="mb-3" style="max-width: 150px;" loading="lazy"
+            decoding="async" fetchpriority="low">
+        </div>
+
+        <!-- Enlaces rápidos -->
+        <div class="col-md-2 mb-4 mt-5">
+          <h5 class="ml12 fw-bold mb-3 beige">Navegación</h5>
+          <ul class="list-unstyled">
+            <li><a href="/index.html#inicio" class="text-white text-decoration-none">Inicio</a></li>
+            <li><a href="/index.html#contacto" class="text-white text-decoration-none">Ubicación</a></li>
+            <li><a href="/index.html#precios" class="text-white text-decoration-none">Precios</a></li>
+            <li><a href="/index.html#nosotros" class="text-white text-decoration-none">Sobre Nosotros</a></li>
+          </ul>
+        </div>
+
+        <!-- Información de contacto -->
+        <div class="col-md-3 mb-4 mt-5">
+          <h5 class="ml12 fw-bold mb-3 beige">Contacto</h5>
+          <ul class="list-unstyled text-white small">
+            <li>📍 Guadalajara & Zapopan, Jalisco</li>
+            <li>📞 332 022 8476</li>
+            <li>✉️ pidemelalunagdl@gmail.com</li>
+            <li><a href="https://wa.me/5213320228476" target="_blank"
+                class="text-decoration-none text-success fw-bold">Mandar Whatsapp</a></li>
+          </ul>
+        </div>
+
+        <!-- Redes sociales -->
+        <div class="col-md-3 mb-4 mt-5">
+          <h5 class="ml12 fw-bold mb-3 beige">Síguenos</h5>
+          <div class="d-flex gap-3">
+            <a href="https://www.facebook.com/pideme.la.lunaa/" class="text-white"><i
+                class="bx bxl-facebook-circle fs-3"></i></a>
+            <a href="https://www.instagram.com/pideme.la.luna_/" class="text-white"><i
+                class="bx bxl-instagram fs-3"></i></a>
+            <a href="https://wa.me/5213320228476" class="text-white"><i class="bx bxl-whatsapp fs-3"></i></a>
+          </div>
+        </div>
+
+      </div>
+
+      <hr>
+
+      <!-- Derechos -->
+      <div class="text-center fw-bold text-white small mt-3">
+        © 2025 PÍDEME LA LUNA. Todos los derechos reservados.
+      </div>
+    </div>
+  </footer>
+
+</body>
 
 </html>
